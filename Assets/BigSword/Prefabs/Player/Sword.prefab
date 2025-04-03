@@ -579,7 +579,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   _rigidbody: {fileID: 6142438637101308105}
-  _recoilPower: 20000
+  _recoilPower: 2000
   _shotCooldown: 10
   _shotChargeTime: 2
   _physicalMover: {fileID: 6320439985964148176}
@@ -596,7 +596,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7642850731060332622}
   serializedVersion: 4
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: -1.5}
@@ -631,7 +631,7 @@ MonoBehaviour:
   _groundLayers:
     serializedVersion: 2
     m_Bits: 24
-  _maxSpeed: 10
+  _maxSpeed: 20
   _accelerationPower: 2000
   _maxAcceleration: 200
   _accelerationFromDot:
@@ -668,14 +668,17 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _rotationSpeed: 300
-  _springStrength: 2000
-  _springDamper: 200
-  _rotationSpringStrength: 3000
-  _rotationSpringDamper: 300
+  _springStrength: 600
+  _springDamper: 60
+  _rotationSpringStrength: 600
+  _rotationSpringDamper: 60
   _maxSpeedMultiplier: 2
   _maxStamina: 0
   _staminaRegenPerSecond: 0
   _staminaSpendPerSecond: 0
+  _dashPower: 20
+  _dashStaminaCost: 40
+  _dashDelay: 0.1
   _staminaBarPrefab: {fileID: 0}
 --- !u!136 &4365035584420771703
 CapsuleCollider:
