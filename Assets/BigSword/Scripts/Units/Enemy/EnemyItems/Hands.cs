@@ -8,21 +8,22 @@ namespace Units.Enemy.EnemyItems
 {
     public class Hands : MonoBehaviour
     {
+        private static readonly int IsDanger = Animator.StringToHash("IsDanger");
+        private static readonly int Attack = Animator.StringToHash("Attack");
+        
+        [SerializeField] private float _height;
         [SerializeField] private float _moveSpeed = 5f;
         [SerializeField] private float _rotationSpeed = 20f;
-        [SerializeField] private Transform _leftHand;
-        [SerializeField] private Transform _rightHand;
-        [Header("Hands Transform")]
-        [SerializeField] private Transform _leftHandIdlePosition;
-        [SerializeField] private Transform _rightHandIdlePosition;
-        [SerializeField] private Transform _leftHandDangerPosition;
-        [SerializeField] private Transform _rightHandDangerPosition;
-        private Transform _leftHandCurrentPosition;
-        private Transform _rightHandCurrentPosition;
+        [SerializeField] private Transform _animatedLeftHand;
+        [SerializeField] private Transform _animatedRightHand;
+        [SerializeField] private Transform _physicalLeftHand;
+        [SerializeField] private Transform _physicalRightHand;
+        private Animator _animator;
         private Transform _pivot;
         
         public void Init(Enemy enemy)
         {
+            _animator = GetComponent<Animator>();
             _pivot = enemy.transform;
             var stateMachine = enemy.StateMachine;
             stateMachine.OnDefaultState += OnDefaultState;
@@ -36,27 +37,33 @@ namespace Units.Enemy.EnemyItems
             Destroy(gameObject);
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.TryGetComponent(out Player.Player player))
+                _animator.SetTrigger(Attack);
+        }
+
         private void OnDangerState()
         {
-            _leftHandCurrentPosition = _leftHandDangerPosition;
-            _rightHandCurrentPosition = _rightHandDangerPosition;
+            _animator.SetBool(IsDanger, true);
         }
 
         private void OnDefaultState()
         {
-            _leftHandCurrentPosition = _leftHandIdlePosition;
-            _rightHandCurrentPosition = _rightHandIdlePosition;
+            _animator.SetBool(IsDanger, false);
         }
 
         private void Update()
         {
-            transform.position = _pivot.position;
+            var position = _pivot.position;
+            position.y = _height;
+            transform.position = position;
             transform.rotation = _pivot.rotation;
             
-            LerpMove(_leftHand, _leftHandCurrentPosition);
-            LerpMove(_rightHand, _rightHandCurrentPosition);
-            LerpRotate(_leftHand, _leftHandCurrentPosition);            
-            LerpRotate(_rightHand, _rightHandCurrentPosition);
+            // LerpMove(_leftHand, _leftHandCurrentPosition);
+            // LerpMove(_rightHand, _rightHandCurrentPosition);
+            // LerpRotate(_leftHand, _leftHandCurrentPosition);            
+            // LerpRotate(_rightHand, _rightHandCurrentPosition);
         }
 
         private void LerpMove(Transform hand, Transform targetPosition)

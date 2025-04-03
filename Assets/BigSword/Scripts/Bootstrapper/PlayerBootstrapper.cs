@@ -18,6 +18,8 @@ namespace Bootstrapper
         private Player _player;
         private UnitUI _playerUI;
         
+        public Player Player => _player;
+        
         private void Awake()
         {
             _player = InstantiatePrefab(_playerPrefab);

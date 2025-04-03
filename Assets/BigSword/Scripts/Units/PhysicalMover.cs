@@ -104,9 +104,9 @@ namespace Units
             }
         }
         
-        public void SetMoveDirection(Vector3 directoion)
+        public void SetMoveDirection(Vector3 direction)
         {
-            _direction = directoion;
+            _direction = direction;
         }
 
         public void SetRotationDegree(float rotationAngle)
