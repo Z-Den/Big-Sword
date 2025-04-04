@@ -1908,14 +1908,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1702603820199394684, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 3.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2591661720745417615, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: m_CenterOfMass.y
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 2950781491805389684, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -127.45
@@ -1956,39 +1948,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6085733899770588612, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: _rotationSpringDamper
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6085733899770588612, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: _rotationSpringStrength
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496109616233382850, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: _handsPrefab
-      value: 
-      objectReference: {fileID: 5295168748723761947, guid: c888256d0fca5b645bcd348450dbd1d5, type: 3}
-    - target: {fileID: 6496109616233382850, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: _parameters.MinDistance
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6496109616233382850, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: _stateMachine._dangerStateTypeState
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6701213942760852575, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
       propertyPath: m_Name
       value: Ogr
       objectReference: {fileID: 0}
-    - target: {fileID: 6989910865442805545, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6989910865442805545, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-    m_RemovedGameObjects:
-    - {fileID: 7268727918649495654, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-    - {fileID: 3373754880860193649, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
