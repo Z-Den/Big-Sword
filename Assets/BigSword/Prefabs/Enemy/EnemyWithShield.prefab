@@ -444,6 +444,9 @@ MonoBehaviour:
   _stateMachine:
     _defaultStateType: 2
     _dangerStateTypeState: 0
+    Enemy: {fileID: 829419190922820669}
+  _unitUI: {fileID: 0}
+  _health: {fileID: 0}
 --- !u!114 &7263886727840159771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -518,7 +521,14 @@ MonoBehaviour:
   _springDamper: 100
   _rotationSpringStrength: 100
   _rotationSpringDamper: 20
-  Rigidbody: {fileID: 598103405436776931}
+  _maxSpeedMultiplier: 2
+  _maxStamina: 100
+  _staminaRegenPerSecond: 20
+  _staminaSpendPerSecond: 30
+  _dashPower: 20
+  _dashStaminaCost: 40
+  _dashDelay: 0.1
+  _staminaBarPrefab: {fileID: 0}
 --- !u!136 &6294434491567270166
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -557,8 +567,7 @@ MonoBehaviour:
   _maxHealth: 100
   _damageResistances: 
   _damageImmunities: 
-  _unitUI: {fileID: 7444432703827794785}
-  _healthBarPrefab: {fileID: 4708852654805375431, guid: 3e34c4899c24b134ca0d4118d05cc402, type: 3}
+  _healthBarPrefab: {fileID: 0}
 --- !u!1 &8891247667009566083
 GameObject:
   m_ObjectHideFlags: 0

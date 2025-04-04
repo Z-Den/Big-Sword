@@ -1,8 +1,6 @@
-using System;
 using Units.Enemy.StateMachine;
-using Units.UI;
+using Units.Health;
 using UnityEngine;
-using UnityEngine.Serialization;
 using IUIElementHolder = Units.UI.IUIElementHolder;
 
 namespace Units.Enemy
@@ -13,11 +11,13 @@ namespace Units.Enemy
         [SerializeField] private EnemyParameters _parameters;
         [SerializeField] private EnemyStateMachine _stateMachine;
         [SerializeField] private UnitUI _unitUI;
+        [SerializeField] private UnitHealth _health;
         
         public PhysicalMover Mover => _mover;
         public EnemyParameters Parameters => _parameters;
         public EnemyStateMachine StateMachine => _stateMachine;
         public UnitUI UnitUI => _unitUI;
+        public UnitHealth Health => _health;
         
         protected void Awake()
         { 
@@ -35,7 +35,7 @@ namespace Units.Enemy
             }
         }
 
-        private void Update()
+        protected virtual void Update()
         {
             _stateMachine.Update();
         }

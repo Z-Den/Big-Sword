@@ -13,9 +13,14 @@ namespace Units.Enemy.StateMachine
         private State _defaultState;
         private State _dangerState;
         private State _currentState;
+
+        public Enemy Enemy {get; private set;}
+        public Action OnDangerState;
+        public Action OnDefaultState;
         
         public void Init(Enemy enemy)
         {
+            Enemy = enemy;
             switch (_defaultStateType)
             {
                 case DefaultStateType.Off:
@@ -58,6 +63,11 @@ namespace Units.Enemy.StateMachine
             _currentState?.OnExit();
             _currentState = _currentState == _defaultState ? _dangerState : _defaultState;
             _currentState?.OnEnter();
+            
+            if (_currentState == _defaultState)
+                OnDefaultState?.Invoke();
+            else
+                OnDangerState?.Invoke();
         }
 
     }

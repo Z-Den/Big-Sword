@@ -1,4 +1,5 @@
 using System;
+using Bootstrapper;
 using Units.Health;
 using Units.Player;
 using UnityEngine;
@@ -8,13 +9,13 @@ namespace GameManager
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private UnitHealth _playerHealth;
         [SerializeField] private GameObject _deadPanel;
+        [SerializeField] private PlayerBootstrapper _playerBootstrapper;
 
-        private void Awake()
+        private void Start()
         {
             _deadPanel.SetActive(false);
-            _playerHealth.OnDeath += OnDeath;
+            _playerBootstrapper.Player.GetComponent<UnitHealth>().OnDeath += OnDeath;
         }
 
         public void RestartGame()

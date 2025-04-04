@@ -13,5 +13,6 @@ namespace Units.Input
         public Action Spell1Canceled{ get; set; }
         public Action RunStarted{ get; set; }
         public Action RunCanceled{ get; set; }
+        public Action DashStarted{ get; set; }
     }
 }
