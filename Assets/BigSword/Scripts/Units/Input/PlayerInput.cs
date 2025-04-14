@@ -15,7 +15,8 @@ namespace Units.Input
         public Action Spell1Canceled {get; set;}
         public Action RunStarted {get; set;}
         public Action RunCanceled {get; set;}
-        
+        public Action DashStarted { get; set; }
+
         public void Awake()
         {
             _playerInput = new PlayerInputAction();
@@ -29,6 +30,8 @@ namespace Units.Input
             
             _playerInput.Player.Run.started += _ => RunStarted?.Invoke();
             _playerInput.Player.Run.canceled += _ => RunCanceled?.Invoke();
+            
+            _playerInput.Player.Dash.started += _ => DashStarted?.Invoke();
         }
 
         public void Update()

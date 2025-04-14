@@ -16,7 +16,7 @@ TagManager:
   - Enemy
   - InteractableObjects
   - PlayerShield
-  - 
+  - EnemyNoInteract
   - 
   - 
   - 

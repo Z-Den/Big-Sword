@@ -16,12 +16,15 @@ namespace Units.Player
         {
             _inputActions.RunStarted += _physicalMover.RunStarted;
             _inputActions.RunCanceled += _physicalMover.RunCanceled;
+            _inputActions.DashStarted += _physicalMover.Dash;
         }
 
         private void OnDisable()
         {
             _inputActions.RunStarted -= _physicalMover.RunStarted;
             _inputActions.RunCanceled -= _physicalMover.RunCanceled;
+            _inputActions.DashStarted -= _physicalMover.Dash;
+
         }
 
         private void Update()

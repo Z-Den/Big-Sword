@@ -334,8 +334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealth: 100
-  _damageResistances: 0000000001000000
-  _damageImmunities: 00000000
+  _damageResistances: 
+  _damageImmunities: 
   _healthBarPrefab: {fileID: -7664388313301540517, guid: 27d1cef711ee08d499104936eba7f294, type: 3}
 --- !u!114 &8717231548375476530
 MonoBehaviour:
@@ -398,6 +398,8 @@ MonoBehaviour:
   _maxStamina: 100
   _staminaRegenPerSecond: 20
   _staminaSpendPerSecond: 30
+  _dashPower: 300
+  _dashStaminaCost: 40
   _staminaBarPrefab: {fileID: 9143711186866958498, guid: ad00dbf4e60f4fc488f7d729c38e6f46, type: 3}
 --- !u!136 &3870379494598609680
 CapsuleCollider:

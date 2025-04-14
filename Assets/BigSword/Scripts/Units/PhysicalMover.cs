@@ -24,13 +24,19 @@ namespace Units
         [SerializeField] private float _rotationSpringDamper = 20f;
         [Header("Stamina")]
         [SerializeField] private float _maxSpeedMultiplier = 2;
-        [SerializeField] private float _maxStamina;
-        [SerializeField] private float _staminaRegenPerSecond;
-        [SerializeField] private float _staminaSpendPerSecond;
+        [SerializeField] private float _maxStamina = 100;
+        [SerializeField] private float _staminaRegenPerSecond = 20;
+        [SerializeField] private float _staminaSpendPerSecond = 30;
+        [Header("Dash")]
+        [SerializeField] private float _dashPower = 20f;
+        [SerializeField] private float _dashStaminaCost = 40;
+        [SerializeField] private float _dashDelay = 0.1f;
+        
         [Header("UI")]
         [SerializeField] private TwoSideBar _staminaBarPrefab;
         private Quaternion _targetRotation;
         private Rigidbody _rigidbody;
+        private Collider _collider;
         private Vector3 _moveVector;
         private Vector3 _goalVelocity;
         private Vector3 _direction;
@@ -39,6 +45,7 @@ namespace Units
         private float _stamina;
         private float _speedMultiplier = 1f;
         private bool _isRunning;
+        private bool _isDashing;
         
         public Action<float, float> OnStaminaChanged;
         public bool IsOnGround { get; private set; }
@@ -47,6 +54,7 @@ namespace Units
         private void Start()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<Collider>();
             _stamina = _maxStamina;
             OnStaminaChanged?.Invoke(_stamina, _maxStamina);
         }
@@ -96,9 +104,9 @@ namespace Units
             }
         }
         
-        public void SetMoveDirection(Vector3 directoion)
+        public void SetMoveDirection(Vector3 direction)
         {
-            _direction = directoion;
+            _direction = direction;
         }
 
         public void SetRotationDegree(float rotationAngle)
@@ -185,6 +193,26 @@ namespace Units
         {
             return Physics.Raycast(_rigidbody.transform.position, -Vector3.up, 
                 out hit, _distanceToFloor * 2, _groundLayers);
+        }
+
+        public void Dash()
+        {
+            if (_stamina < _dashStaminaCost)
+                return;
+            
+            _isDashing = true;
+            _collider.enabled = false;
+            var force = _direction * _dashPower; 
+            _rigidbody.AddForce(force, ForceMode.Impulse);
+            _stamina -= _dashStaminaCost;
+            OnStaminaChanged?.Invoke(_stamina, _maxStamina);
+            Invoke(nameof(ResetDashParameters), _dashDelay);
+        }
+
+        private void ResetDashParameters()
+        {
+            _isDashing = false;
+            _collider.enabled = true;
         }
 
         public UIElement GetUIElement()
