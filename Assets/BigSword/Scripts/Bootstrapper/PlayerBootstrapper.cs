@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using PivotConnection;
+using UI.PauseMenu;
 using Units;
 using Units.Input;
 using Units.Player;
@@ -55,13 +56,14 @@ namespace Bootstrapper
         
         private void ConfigureDependencies(List<GameObject> connectedObjects)
         {
-            _player.gameObject.TryGetComponent(out IUnitInput input);
+            var inGameInput = new PlayerInput();
+            
             _player.gameObject.TryGetComponent(out IPivot pivot);
             foreach (var connectedObject in connectedObjects)
             {
                 foreach (var component in connectedObject.GetComponents<IUnitActionController>())
                 {
-                    component.SetInput(input);
+                    component.SetInput(inGameInput);
                 }
 
                 foreach (var component in connectedObject.GetComponents<IPivotFollower>())

@@ -238,7 +238,6 @@ GameObject:
   - component: {fileID: 704272702347576435}
   - component: {fileID: 5790703532747124042}
   - component: {fileID: 4251952240186436979}
-  - component: {fileID: 7738623816630352583}
   - component: {fileID: 888410219484653103}
   - component: {fileID: 8717231548375476530}
   - component: {fileID: 3870379494598609680}
@@ -309,18 +308,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7738623816630352583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6408256550234937149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03f5addfaedfb484dbf76460eabd7d23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &888410219484653103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +387,7 @@ MonoBehaviour:
   _staminaSpendPerSecond: 30
   _dashPower: 300
   _dashStaminaCost: 40
+  _dashDelay: 0.1
   _staminaBarPrefab: {fileID: 9143711186866958498, guid: ad00dbf4e60f4fc488f7d729c38e6f46, type: 3}
 --- !u!136 &3870379494598609680
 CapsuleCollider:
