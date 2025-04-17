@@ -1,4 +1,5 @@
 using Units.Input;
+using UnityEngine;
 
 namespace UI.PauseMenu
 {
@@ -18,6 +19,7 @@ namespace UI.PauseMenu
         {
             _isOpen = isActive;
             _input.SetInputScheme(_isOpen? PlayerInputScheme.UI : PlayerInputScheme.Battle);
+            Time.timeScale = isActive ? 0 : 1;
         }
     }
 }

@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
 using Units.Input;
 using Units.UI;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,32 +16,19 @@ namespace UI.PauseMenu
             _model = new PauseMenuModel(_inputActions as PlayerInput);
             _view = GetComponent<PauseMenuView>();
 
-            SubscribeToButtons();
-            
             _inputActions.MenuButtonPressed += OpenMenu;
-            _inputActions.UIBackButtonPressed += BackButtonPressed;
-            _inputActions.UIApplyButtonPressed += ApplyButtonPressed;
+            _inputActions.UIBackButtonPressed += BackKeyPressed;
+            _inputActions.UIApplyButtonPressed += ApplyKeyPressed;
             
             CloseMenu();
         }
-
-        private void SubscribeToButtons()
-        {
-            foreach (var button in _view.Buttons)
-                button.onClick.AddListener(OnPointerClickButton);
-        }
-
-        private void OnPointerClickButton()
-        {
-            
-        }
-
-        private void ApplyButtonPressed()
+        
+        private void ApplyKeyPressed()
         {
            
         }
 
-        private void BackButtonPressed()
+        private void BackKeyPressed()
         {
             if (_view.IsPanelOpened)
                 _view.ClosePanel();
@@ -67,17 +51,12 @@ namespace UI.PauseMenu
             _model.SetMenuActive(false);
             _view.SetActive(false);
         }
-
-        public void PressButton()
-        {
-            
-        }
         
         public UIElement GetUIElement()
         {
             return this;
         }
-
+        
         public void OnContinueButtonClicked()
         {
             CloseMenu();
@@ -94,17 +73,6 @@ namespace UI.PauseMenu
                 UnityEditor.EditorApplication.isPlaying = false;
             else
                 Application.Quit();
-        }
-
-        private void OnDisable()
-        {
-            UnsubscribeFromButtons();
-        }
-
-        private void UnsubscribeFromButtons()
-        {
-            foreach (var button in _view.Buttons)
-                button.onClick.RemoveListener(OnPointerClickButton);
         }
         
         IUnitInput IUnitActionController.InputActions

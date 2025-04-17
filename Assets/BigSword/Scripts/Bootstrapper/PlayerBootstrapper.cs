@@ -26,8 +26,9 @@ namespace Bootstrapper
             _player = InstantiatePrefab(_playerPrefab);
             _playerUI = InstantiatePrefab(_playerUIPrefab);
             
-            var items = _playerItemPrefabs.Select(InstantiatePrefab).ToList();
+            var items = new List<GameObject>();
             items.Add(_player.gameObject);
+            items.AddRange(_playerItemPrefabs.Select(InstantiatePrefab).ToList());
             
             ConfigureDependencies(items);
         }
