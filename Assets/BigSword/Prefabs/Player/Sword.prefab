@@ -535,6 +535,7 @@ GameObject:
   - component: {fileID: 6142438637101308105}
   - component: {fileID: 6320439985964148176}
   - component: {fileID: 4365035584420771703}
+  - component: {fileID: 2680763037449946971}
   m_Layer: 7
   m_Name: Sword
   m_TagString: Untagged
@@ -622,7 +623,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7642850731060332622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ae07ad6f3894c5aa48badb19e58f449, type: 3}
   m_Name: 
@@ -703,3 +704,54 @@ CapsuleCollider:
   m_Height: 5.083368
   m_Direction: 2
   m_Center: {x: 0, y: -0.005105555, z: 2.5521467}
+--- !u!114 &2680763037449946971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642850731060332622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7ebd3fa46a45abb7a31ef0971697dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _offset: {x: 0, y: 0, z: 0}
+  _maxSpeed: 20
+  _accelerationPower: 2000
+  _maxAcceleration: 200
+  _accelerationFromDot:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: -1.8410568
+      outSlope: -1.8410568
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5093138
+      value: 1.0623243
+      inSlope: -0.338641
+      outSlope: -0.338641
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1791941
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.12701455
+      outSlope: -0.12701455
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _rotationSpringStrength: 600
+  _rotationSpringDamper: 60

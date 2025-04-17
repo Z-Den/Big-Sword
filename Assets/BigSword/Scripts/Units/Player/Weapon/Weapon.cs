@@ -38,7 +38,9 @@ namespace Units.Player.Weapon
             get => _pivotTransform;
             set => _pivotTransform = value;
         }
-        
+
+        public Vector3 Offset { get; }
+
         private void Start()
         {   
             _inputActions.ShotStarted += StartChargeShot;

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Units
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class PhysicalMover : MonoBehaviour, IUIElementHolder
+    public class PhysicalMover : MonoBehaviour, IUnitActionController, IUIElementHolder
     {
         [Header("Ground Ray")]
         [SerializeField] private float _distanceToFloor = 0.6f;
@@ -31,7 +31,6 @@ namespace Units
         [SerializeField] private float _dashPower = 20f;
         [SerializeField] private float _dashStaminaCost = 40;
         [SerializeField] private float _dashDelay = 0.1f;
-        
         [Header("UI")]
         [SerializeField] private TwoSideBar _staminaBarPrefab;
         private Quaternion _targetRotation;
@@ -46,6 +45,7 @@ namespace Units
         private float _speedMultiplier = 1f;
         private bool _isRunning;
         private bool _isDashing;
+        private IUnitInput _inputActions;
         
         public Action<float, float> OnStaminaChanged;
         public bool IsOnGround { get; private set; }
@@ -53,10 +53,18 @@ namespace Units
         
         private void Start()
         {
+            SubscribeToActions();
             _rigidbody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
             _stamina = _maxStamina;
             OnStaminaChanged?.Invoke(_stamina, _maxStamina);
+        }
+
+        private void SubscribeToActions()
+        {
+            _inputActions.RunStarted += RunStarted;
+            _inputActions.RunCanceled += RunCanceled;
+            _inputActions.DashStarted += Dash;
         }
 
         public void RunStarted()
@@ -76,6 +84,11 @@ namespace Units
         
         private void Update()
         {
+            var moveDirection = (_inputActions.MoveDirection.y * _rigidbody.transform.forward + 
+                                 _inputActions.MoveDirection.x * _rigidbody.transform.right);
+            SetMoveDirection(moveDirection);
+            SetRotationDegree(_inputActions.Rotation);
+            
             Regenerate();
             Spend();
             
@@ -200,6 +213,9 @@ namespace Units
             if (_stamina < _dashStaminaCost)
                 return;
             
+            if (_isDashing)
+                return;
+            
             _isDashing = true;
             _collider.enabled = false;
             var force = _direction * _dashPower; 
@@ -223,6 +239,12 @@ namespace Units
             var staminaBar = Instantiate(_staminaBarPrefab);
             OnStaminaChanged += staminaBar.FillBar;
             return staminaBar;
+        }
+
+        IUnitInput IUnitActionController.InputActions
+        {
+            get => _inputActions;
+            set => _inputActions = value;
         }
     }
 }
