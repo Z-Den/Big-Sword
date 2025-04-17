@@ -1056,6 +1056,7 @@ MonoBehaviour:
   - {fileID: 4394076485282684591, guid: 8093b494057ac464aab47e1fe5297aa0, type: 3}
   - {fileID: 7642850731060332622, guid: 93843c348f924c7459c872a2148b0090, type: 3}
   - {fileID: 6260674569164676578, guid: debd25df97b1b5643884686426da0b64, type: 3}
+  - {fileID: 3618330725802250097, guid: 34151b7c47ba19144a3746ba7ae0c887, type: 3}
 --- !u!4 &672843102
 Transform:
   m_ObjectHideFlags: 0
@@ -1952,6 +1953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ogr
       objectReference: {fileID: 0}
+    - target: {fileID: 6701213942760852575, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2280,6 +2285,10 @@ PrefabInstance:
     - target: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
       propertyPath: m_Name
       value: SimpleEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

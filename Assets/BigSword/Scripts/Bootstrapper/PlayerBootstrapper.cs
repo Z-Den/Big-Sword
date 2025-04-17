@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
 using PivotConnection;
-using UI.PauseMenu;
 using Units;
 using Units.Input;
 using Units.Player;
@@ -25,11 +25,9 @@ namespace Bootstrapper
         {
             _player = InstantiatePrefab(_playerPrefab);
             _playerUI = InstantiatePrefab(_playerUIPrefab);
-            ConfigureDependenciesInPlayerComponents();
             
-            var items = new List<GameObject>(); 
-            foreach (var itemPrefab in _playerItemPrefabs)
-                items.Add(InstantiatePrefab(itemPrefab));
+            var items = _playerItemPrefabs.Select(InstantiatePrefab).ToList();
+            items.Add(_player.gameObject);
             
             ConfigureDependencies(items);
         }
@@ -38,32 +36,17 @@ namespace Bootstrapper
         {
             return Instantiate(prefab, _playerSpawnPoint.position, Quaternion.identity);
         }
-
-        private void ConfigureDependenciesInPlayerComponents()
-        {
-            _player.gameObject.TryGetComponent(out IUnitInput input);
-            _player.gameObject.TryGetComponent(out IPivot pivot);
-            
-            foreach (var component in _player.gameObject.GetComponents<IUnitActionController>())
-                component.SetInput(input);
-
-            foreach (var component in _player.gameObject.GetComponents<IPivotFollower>())
-                component.SetPivot(pivot);
-            
-            foreach (var component in _player.gameObject.GetComponents<IUIElementHolder>())
-                _playerUI.Add(component.GetUIElement());
-        }
         
         private void ConfigureDependencies(List<GameObject> connectedObjects)
         {
-            var inGameInput = new PlayerInput();
-            
+            var input = new PlayerInput();
             _player.gameObject.TryGetComponent(out IPivot pivot);
+            
             foreach (var connectedObject in connectedObjects)
             {
                 foreach (var component in connectedObject.GetComponents<IUnitActionController>())
                 {
-                    component.SetInput(inGameInput);
+                    component.SetInput(input);
                 }
 
                 foreach (var component in connectedObject.GetComponents<IPivotFollower>())

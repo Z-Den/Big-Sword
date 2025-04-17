@@ -26,14 +26,17 @@ namespace Units.Input
         {
             InitInGameInput();
             InitUIInput();
+            SetInputScheme(PlayerInputScheme.Battle);
         }
 
         private void InitInGameInput()
         {
             _playerInGameInput = new PlayerInputAction();
             
-            _playerInGameInput.Player.Move.started += _ => MoveDirection = _playerInGameInput.Player.Move.ReadValue<Vector2>();
-            _playerInGameInput.Player.Rotation.started += _ => Rotation = _playerInGameInput.Player.Rotation.ReadValue<float>();
+            _playerInGameInput.Player.Move.performed += _ => MoveDirection = _playerInGameInput.Player.Move.ReadValue<Vector2>();
+            _playerInGameInput.Player.Move.canceled += _ => MoveDirection = Vector2.zero;
+            _playerInGameInput.Player.Rotation.performed += _ => Rotation = _playerInGameInput.Player.Rotation.ReadValue<float>();
+            _playerInGameInput.Player.Rotation.canceled += _ => Rotation = 0;
             
             _playerInGameInput.Player.Shot.started += _ => ShotStarted?.Invoke();
             _playerInGameInput.Player.Shot.canceled += _ => ShotCanceled?.Invoke();
@@ -45,6 +48,7 @@ namespace Units.Input
             _playerInGameInput.Player.Run.canceled += _ => RunCanceled?.Invoke();
             
             _playerInGameInput.Player.Dash.started += _ => DashStarted?.Invoke();
+            _playerInGameInput.UI.MenuButton.started += _ => MenuButtonPressed?.Invoke();
         }
 
         private void InitUIInput()

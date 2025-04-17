@@ -1,29 +1,42 @@
 using System;
 using System.Collections.Generic;
+using Units.Input;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.PauseMenu
 {
     public class PauseMenuView : MonoBehaviour
     {
-        [SerializeField] private List<ButtonRenderer> _buttons;
+        [SerializeField] private List<Button> _buttons;
+        [SerializeField] private Image _background;
+        private GameObject _activePanel;
+        
+        public bool IsPanelOpened => _activePanel != null;
+        public List<Button> Buttons => _buttons;
 
-        private void Awake()
-        {
-            ResetButtons();
-        }
-
-        public void PressButton(ButtonRenderer clickedButton)
-        {
-            ResetButtons();
-            Debug.Log(clickedButton);
-            clickedButton.SetBackgroundColor(new Color(1, 1, 1, 1));
-        }
-
-        private void ResetButtons()
+        public void SetActive(bool active)
         {
             foreach (var button in _buttons)
-                button.SetBackgroundColor(new Color(0, 0, 0, 0));
+                button.gameObject.SetActive(active);
+            _background.gameObject.SetActive(active);
+            ClosePanel();
+        }
+
+        public void ShowPanel(GameObject panel)
+        {
+            ClosePanel();
+            panel.SetActive(true);
+            _activePanel = panel;
+        }
+
+        public void ClosePanel()
+        {
+            if (_activePanel != null)
+            {
+                _activePanel.SetActive(false);
+                _activePanel = null;
+            }
         }
     }
 }
