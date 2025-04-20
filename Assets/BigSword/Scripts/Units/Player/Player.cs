@@ -1,3 +1,4 @@
+using System;
 using PivotConnection;
 using Units.Health;
 using Units.Input;
@@ -11,7 +12,15 @@ namespace Units.Player
 
         public Transform PivotTransform => _pivotTransform;
         public UnitHealth Health => GetComponent<UnitHealth>();
-        
-        
+
+        private void Start()
+        {
+            Health.OnDeath += OnDeath;
+        }
+
+        private void OnDeath()
+        {
+            GameManager.GameManager.Instance.ShowDeadPanel();
+        }
     }
 }

@@ -7433,8 +7433,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a196d76b9564adfb45d5c6d246861bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSaveMenu: 1
   _container: {fileID: 7850474272715702050}
-  _isInstantiateEmptySlot: 1
   _cellPrefab: {fileID: 4513570609745043223, guid: d07d867d8992ec844ace66ba04322fd7, type: 3}
 --- !u!224 &6601062355550253396 stripped
 RectTransform:
@@ -8800,8 +8800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a196d76b9564adfb45d5c6d246861bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isSaveMenu: 0
   _container: {fileID: 1183562675803867752}
-  _isInstantiateEmptySlot: 0
   _cellPrefab: {fileID: 4513570609745043223, guid: d07d867d8992ec844ace66ba04322fd7, type: 3}
 --- !u!1001 &7628054661500850553
 PrefabInstance:

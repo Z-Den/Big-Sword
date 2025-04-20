@@ -1,52 +1,52 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using Bootstrapper;
 using Units.Player;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace SaveLoadSystem
 {
     public class SaveLoadService : MonoBehaviour
     {
+        private readonly string _saveFilePrefix = "savefile";
+        private readonly string _saveFileExtension = ".json";
         private string _saveDirectory;
-        private string _saveFilePrefix = "savefile";
-        private string _saveFileExtension = ".json";
-        private static SaveLoadService _instance;
         private ISaveLoadRepository _repository ;
-        private Player _player;
-        
+        private static SaveLoadService _instance;
         public static SaveLoadService Instance => _instance;
 
-        public void Init(Player player, ISaveLoadRepository repository)
+        public void Init(ISaveLoadRepository repository)
         {
-            _player = player;
-            
             _instance = FindAnyObjectByType<SaveLoadService>();
             _repository = repository;
             
             _saveDirectory = Path.Combine(Application.persistentDataPath, "Saves");
+            
             if (!Directory.Exists(_saveDirectory))
-            {
                 Directory.CreateDirectory(_saveDirectory);
-            }
         }
 
         public void SavePlayerData()
         {
+            var player = FindAnyObjectByType<Player>();
+            var currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+
             GetNewSavePath(out var savePath, out var fileName);
             
-            var position = Vec3ToFloat(_player.transform.position);
-            var health = _player.Health.CurrentHealth;
-            var data = new SaveData(fileName, health,1, position);
+            var position = player.transform.position;
+            var health = player.Health.CurrentHealth;
+            var data = new SaveData(fileName, health, currentSceneIndex, position);
             
             _repository.SaveDataTo(data, savePath);
         }
 
-        public SaveData LoadPlayerData(string saveFileName)
+        public SaveData GetPlayerData(string saveFileName)
         {
-            string savePath = Path.Combine(_saveDirectory, saveFileName + _saveFileExtension);
-            var json = File.ReadAllText(savePath);
-            var data = JsonUtility.FromJson<SaveData>(json);
-            return data;
+            var savePath = Path.Combine(_saveDirectory, saveFileName + _saveFileExtension);
+            return _repository.LoadDataFrom(savePath);
         }
         
         public List<SaveData> GetSaveFilesList()
@@ -58,12 +58,20 @@ namespace SaveLoadSystem
             foreach (var file in saveFiles)
             {
                 var savePath = Path.Combine(_saveDirectory, file.Name);
-                var json = File.ReadAllText(savePath);
-                var data = JsonUtility.FromJson<SaveData>(json);
+                var data = _repository.LoadDataFrom(savePath);
                 gameDataList.Add(data);
             }
 
             return gameDataList;
+        }
+
+        public SaveData GetLatestSaveData()
+        {
+            var saves = GetSaveFilesList();
+            var max = saves.Max(entry => entry.SaveDate);
+            var latestSave = (SaveData)saves.Where(entry => entry.SaveDate == max);
+            Debug.Log(latestSave);
+            return latestSave;
         }
 
         private void GetNewSavePath(out string savePath, out string fileName)
@@ -77,10 +85,6 @@ namespace SaveLoadSystem
             } while (File.Exists(savePath));
         }
         
-        private float[] Vec3ToFloat(Vector3 vec3)
-        {
-            var floatPos = new[] { vec3.x, vec3.y, vec3.z }; 
-            return floatPos;
-        }
+
     }
 }

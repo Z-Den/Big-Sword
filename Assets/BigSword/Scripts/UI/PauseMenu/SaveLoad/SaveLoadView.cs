@@ -9,8 +9,8 @@ namespace UI.PauseMenu.SaveLoad
 {
     public class SaveLoadView : MonoBehaviour
     {
+        [SerializeField] private bool _isSaveMenu; 
         [SerializeField] private Transform _container;
-        [SerializeField] private bool _isInstantiateEmptySlot; 
         [SerializeField] private SaveSlot _cellPrefab;
         
         public SaveSlot EmptySlot { get; private set; }
@@ -24,7 +24,7 @@ namespace UI.PauseMenu.SaveLoad
         public void Render()
         {
             ClearContainer();
-            if (_isInstantiateEmptySlot)
+            if (_isSaveMenu)
             {
                 var instance = Instantiate(_cellPrefab, _container);
                 instance.Render(null, "New save");
@@ -40,7 +40,8 @@ namespace UI.PauseMenu.SaveLoad
             foreach (var saveFile in saveFiles)
             {
                 var instance = Instantiate(_cellPrefab, _container);
-                instance.Render(null, saveFile.SaveName, saveFile.SaveDate);
+                Debug.Log(saveFile.SaveDate);
+                instance.Render(null, saveFile.SaveName, saveFile.SaveDate, _isSaveMenu);
                 Slots.Add(instance);
             }
         }

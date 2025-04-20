@@ -1,3 +1,4 @@
+using System;
 using SaveLoadSystem;
 using Units.Input;
 using Units.UI;
@@ -75,7 +76,14 @@ namespace UI.PauseMenu
             else
                 Application.Quit();
         }
-        
+
+        private void OnDestroy()
+        {
+            _inputActions.MenuButtonPressed -= OpenMenu;
+            _inputActions.UIBackButtonPressed -= BackKeyPressed;
+            _inputActions.UIApplyButtonPressed -= ApplyKeyPressed;
+        }
+
         IUnitInput IUnitActionController.InputActions
         {
             get => _inputActions;

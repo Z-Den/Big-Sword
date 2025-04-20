@@ -533,7 +533,6 @@ GameObject:
   - component: {fileID: 3552051668417920916}
   - component: {fileID: 6016788706432545450}
   - component: {fileID: 6142438637101308105}
-  - component: {fileID: 6320439985964148176}
   - component: {fileID: 4365035584420771703}
   - component: {fileID: 2680763037449946971}
   m_Layer: 7
@@ -583,7 +582,7 @@ MonoBehaviour:
   _recoilPower: 2000
   _shotCooldown: 10
   _shotChargeTime: 2
-  _physicalMover: {fileID: 6320439985964148176}
+  _physicalMover: {fileID: 0}
   _trailPrefab: {fileID: 5868819485631490170, guid: e538c36c2e693c04388dc2535dbf5067, type: 3}
   _trailSpeed: 100
   _shootDistance: 20
@@ -616,71 +615,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!114 &6320439985964148176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7642850731060332622}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ae07ad6f3894c5aa48badb19e58f449, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _distanceToFloor: 1.5
-  _groundLayers:
-    serializedVersion: 2
-    m_Bits: 24
-  _maxSpeed: 20
-  _accelerationPower: 2000
-  _maxAcceleration: 200
-  _accelerationFromDot:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 2
-      inSlope: -1.8410568
-      outSlope: -1.8410568
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 0.5093138
-      value: 1.0623243
-      inSlope: -0.338641
-      outSlope: -0.338641
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.1791941
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: -0.12701455
-      outSlope: -0.12701455
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _rotationSpeed: 300
-  _springStrength: 600
-  _springDamper: 60
-  _rotationSpringStrength: 600
-  _rotationSpringDamper: 60
-  _maxSpeedMultiplier: 2
-  _maxStamina: 0
-  _staminaRegenPerSecond: 0
-  _staminaSpendPerSecond: 0
-  _dashPower: 20
-  _dashStaminaCost: 40
-  _dashDelay: 0.1
-  _staminaBarPrefab: {fileID: 0}
 --- !u!136 &4365035584420771703
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -11,26 +11,33 @@ namespace UI.PauseMenu.SaveLoad
         [SerializeField] private Image _image;
         [SerializeField] private TMP_Text _name;
         [SerializeField] private TMP_Text _date;
-
-        public Action OnSaveButtonPressed;
+        private bool _isSaveButton;
         
-        public void Render(Sprite sprite, string name, DateTime date)
+        public Action OnSaveButtonPressed;
+        public Action<string> OnLoadButtonPressed;
+        
+        public void Render(Sprite sprite, string fileName, DateTime date, bool isSaveButton)
         {
             _image.sprite = sprite;
-            _name.text = name;
-            _date.text = date.ToShortDateString();
+            _name.text = fileName;
+            _date.text = date.ToString();
+            _isSaveButton = isSaveButton;
         }
         
-        public void Render(Sprite sprite, string name)
+        public void Render(Sprite sprite, string fileName)
         {
             _image.sprite = sprite;
-            _name.text = name;
+            _name.text = fileName;
             _date.text = "";
+            _isSaveButton = true;
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            OnSaveButtonPressed?.Invoke();
+            if (_isSaveButton)
+                OnSaveButtonPressed?.Invoke();
+            else
+                OnLoadButtonPressed?.Invoke(_name.text);
         }
     }
 }

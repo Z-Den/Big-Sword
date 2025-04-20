@@ -22,8 +22,14 @@ namespace UI.PauseMenu.SaveLoad
             
             foreach (var slot in _saveLoadView.Slots)
             {
+                slot.OnLoadButtonPressed += OnLoadButtonPressed;
                 slot.OnSaveButtonPressed += OnSaveButtonPressed;
             }
+        }
+
+        public void OnLoadButtonPressed(string slotName)
+        {
+            _saveLoadModel.Load(slotName);
         }
 
         public void OnSaveButtonPressed()
@@ -31,6 +37,7 @@ namespace UI.PauseMenu.SaveLoad
             //_saveLoadView.ShowConfirmPanel();
             _saveLoadModel.Save();
             _saveLoadView.Render();
+            SubscribeToSlots();
         }
 
         public void OnConfirmButtonPressed()

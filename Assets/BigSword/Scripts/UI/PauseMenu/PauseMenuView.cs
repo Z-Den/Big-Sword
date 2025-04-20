@@ -15,7 +15,6 @@ namespace UI.PauseMenu
         private GameObject _activePanel;
         
         public bool IsPanelOpened => _activePanel != null;
-
         
         public void SetActive(bool active)
         {
