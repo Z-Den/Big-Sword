@@ -6,6 +6,7 @@ using Units.Input;
 using Units.Player;
 using Units.UI;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Bootstrapper
 {
@@ -20,9 +21,11 @@ namespace Bootstrapper
         private UnitUI _playerUI;
         
         public Player Player => _player;
-        
-        private void Awake()
+
+        public void Init(Vector3 playerSpawnPosition)
         {
+            _playerSpawnPoint.position = playerSpawnPosition;
+
             _player = InstantiatePrefab(_playerPrefab);
             _playerUI = InstantiatePrefab(_playerUIPrefab);
             
@@ -31,6 +34,7 @@ namespace Bootstrapper
             items.AddRange(_playerItemPrefabs.Select(InstantiatePrefab).ToList());
             
             ConfigureDependencies(items);
+            
         }
 
         private T InstantiatePrefab<T>(T prefab) where T : Object

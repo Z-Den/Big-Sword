@@ -1,4 +1,5 @@
 using System;
+using PivotConnection;
 using Units.Enemy.EnemyItems;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,6 +14,7 @@ namespace Units.Enemy
         {
             var hands = Instantiate(_handsPrefab);
             hands.Init(this);
+            ((IPivotFollower)hands).SetPivot(this);
         }
     }
 }

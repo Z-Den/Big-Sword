@@ -57,6 +57,7 @@ namespace Units
             _rigidbody = GetComponent<Rigidbody>();
             _collider = GetComponent<Collider>();
             _stamina = _maxStamina;
+            _targetRotation = Quaternion.identity;
             OnStaminaChanged?.Invoke(_stamina, _maxStamina);
         }
 
@@ -128,6 +129,7 @@ namespace Units
             if (_degree >= 360) _degree = 0;
             else if (_degree < 0) _degree = 360;
             var newRotation = Quaternion.Euler(new Vector3(0, _degree, 0));
+            
             SetRotation(newRotation);
         }
 
