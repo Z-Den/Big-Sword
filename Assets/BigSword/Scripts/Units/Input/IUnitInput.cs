@@ -14,8 +14,5 @@ namespace Units.Input
         public Action RunStarted{ get; set; }
         public Action RunCanceled{ get; set; }
         public Action DashStarted{ get; set; }
-        public Action MenuButtonPressed{ get; set; }
-        public Action UIBackButtonPressed{ get; set; }
-        public Action UIApplyButtonPressed{ get; set; }
     }
 }

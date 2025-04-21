@@ -27,7 +27,6 @@ namespace Units.Player
         private float _goatSize;
         private List<IDamage> _damageImmunitySources;
         private float _damageImmunityTime = 0.5f;
-        private Vector3 _offset = Vector3.zero;
         
         public Action<float, float> ShieldHealthChanged;
         public Action<float> DamageApplied;
@@ -40,7 +39,6 @@ namespace Units.Player
             get => _pivotTransform;
             set => _pivotTransform = value;
         }
-        public Vector3 Offset => _offset;
         
         IUnitInput IUnitActionController.InputActions
         {

@@ -6,21 +6,8 @@ using UnityEngine;
 namespace Units.Enemy.StateMachine
 {
     [Serializable]
-    public class EnemyStateMachine : IUnitInput
+    public class EnemyStateMachine
     {
-        public Vector2 MoveDirection { get; set; }
-        public float Rotation { get; set; }
-        public Action ShotStarted { get; set; }
-        public Action ShotCanceled { get; set; }
-        public Action Spell1Started { get; set; }
-        public Action Spell1Canceled { get; set; }
-        public Action RunStarted { get; set; }
-        public Action RunCanceled { get; set; }
-        public Action DashStarted { get; set; }
-        public Action MenuButtonPressed { get; set; }
-        public Action UIBackButtonPressed { get; set; }
-        public Action UIApplyButtonPressed { get; set; }
-        
         [SerializeField] private DefaultStateType _defaultStateType;
         [SerializeField] private DangerStateType _dangerStateTypeState;
         private State _defaultState;
@@ -82,5 +69,6 @@ namespace Units.Enemy.StateMachine
             else
                 OnDangerState?.Invoke();
         }
+
     }
 }
