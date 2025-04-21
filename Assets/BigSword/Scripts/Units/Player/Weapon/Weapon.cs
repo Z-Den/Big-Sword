@@ -16,7 +16,7 @@ namespace Units.Player.Weapon
         [SerializeField] private float _recoilPower = 1000;
         [SerializeField] private float _shotCooldown = 30f;
         [SerializeField] private float _shotChargeTime = 30f;
-        [SerializeField] private PhysicalMover _physicalMover;
+        //[SerializeField] private PhysicalMover _physicalMover;
         [SerializeField] private TrailRenderer _trailPrefab;
         [SerializeField] private float _trailSpeed = 20f; 
         [SerializeField] private float _shootDistance;
@@ -38,7 +38,9 @@ namespace Units.Player.Weapon
             get => _pivotTransform;
             set => _pivotTransform = value;
         }
-        
+
+        public Vector3 Offset { get; }
+
         private void Start()
         {   
             _inputActions.ShotStarted += StartChargeShot;
@@ -69,8 +71,8 @@ namespace Units.Player.Weapon
             if (!_pivotTransform)
                 return;
             
-            _physicalMover.SetMoveDirection((_pivotTransform.position + transform.forward * _offset.z) - transform.position);
-            _physicalMover.SetRotation(_pivotTransform.rotation);
+            //_physicalMover.SetMoveDirection((_pivotTransform.position + transform.forward * _offset.z) - transform.position);
+            //_physicalMover.SetRotation(_pivotTransform.rotation);
         }
 
         private void UpdateTimer(ref float timer, ref float cooldown, ref Action<float, float> callback)
