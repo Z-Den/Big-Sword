@@ -1,13 +1,11 @@
 using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace Units.Input
 {
-    public class PlayerInput : IUnitInput
+    public class PlayerInput : MonoBehaviour, IUnitInput
     {
-        private PlayerInputAction _playerInGameInput;
-        private PlayerInputAction _playerUIInput;
+        private PlayerInputAction _playerInput;
         
         public Vector2 MoveDirection {get; set;}
         public float Rotation {get; set;}
@@ -18,66 +16,28 @@ namespace Units.Input
         public Action RunStarted {get; set;}
         public Action RunCanceled {get; set;}
         public Action DashStarted { get; set; }
-        public Action MenuButtonPressed { get; set; }
-        public Action UIBackButtonPressed { get; set; }
-        public Action UIApplyButtonPressed { get; set; }
 
-        public PlayerInput()
+        public void Awake()
         {
-            InitInGameInput();
-            InitUIInput();
-            SetInputScheme(PlayerInputScheme.Battle);
+            _playerInput = new PlayerInputAction();
+            _playerInput.Enable();
+            
+            _playerInput.Player.Shot.started += _ => ShotStarted?.Invoke();
+            _playerInput.Player.Shot.canceled += _ => ShotCanceled?.Invoke();
+            
+            _playerInput.Player.Shield.started += _ => Spell1Started?.Invoke();
+            _playerInput.Player.Shield.canceled += _ => Spell1Canceled?.Invoke();
+            
+            _playerInput.Player.Run.started += _ => RunStarted?.Invoke();
+            _playerInput.Player.Run.canceled += _ => RunCanceled?.Invoke();
+            
+            _playerInput.Player.Dash.started += _ => DashStarted?.Invoke();
         }
 
-        private void InitInGameInput()
+        public void Update()
         {
-            _playerInGameInput = new PlayerInputAction();
-            
-            _playerInGameInput.Player.Move.performed += _ => MoveDirection = _playerInGameInput.Player.Move.ReadValue<Vector2>();
-            _playerInGameInput.Player.Move.canceled += _ => MoveDirection = Vector2.zero;
-            _playerInGameInput.Player.Rotation.performed += _ => Rotation = _playerInGameInput.Player.Rotation.ReadValue<float>();
-            _playerInGameInput.Player.Rotation.canceled += _ => Rotation = 0;
-            
-            _playerInGameInput.Player.Shot.started += _ => ShotStarted?.Invoke();
-            _playerInGameInput.Player.Shot.canceled += _ => ShotCanceled?.Invoke();
-            
-            _playerInGameInput.Player.Shield.started += _ => Spell1Started?.Invoke();
-            _playerInGameInput.Player.Shield.canceled += _ => Spell1Canceled?.Invoke();
-            
-            _playerInGameInput.Player.Run.started += _ => RunStarted?.Invoke();
-            _playerInGameInput.Player.Run.canceled += _ => RunCanceled?.Invoke();
-            
-            _playerInGameInput.Player.Dash.started += _ => DashStarted?.Invoke();
-            _playerInGameInput.UI.MenuButton.started += _ => MenuButtonPressed?.Invoke();
-        }
-
-        private void InitUIInput()
-        {
-            _playerUIInput = new PlayerInputAction();
-            _playerUIInput.UI.MenuButton.started += _ => MenuButtonPressed?.Invoke();
-            _playerUIInput.UI.Back.started += _ => UIBackButtonPressed?.Invoke();
-            _playerUIInput.UI.MenuButton.started += _ => UIApplyButtonPressed?.Invoke();
-        }
-        
-        public void SetInputScheme(PlayerInputScheme scheme)
-        {
-            switch (scheme)
-            {
-                case PlayerInputScheme.Battle:
-                    _playerInGameInput.Enable();
-                    _playerUIInput.Disable();
-                    break;
-                case PlayerInputScheme.UI:
-                    _playerInGameInput.Disable();
-                    _playerUIInput.Enable();
-                    break;
-                case PlayerInputScheme.None:
-                    _playerInGameInput.Disable();
-                    _playerUIInput.Disable();
-                    break;
-            }
+            MoveDirection = _playerInput.Player.Move.ReadValue<Vector2>();
+            Rotation = _playerInput.Player.Rotation.ReadValue<float>();
         }
     }
-    
-    
 }

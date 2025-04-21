@@ -21,7 +21,6 @@ namespace Units.Health
         private List<IDamage> _damageImmunitySources;
         private float _damageImmunityTime = 0.5f;
         
-        public float CurrentHealth => _health;
         public Action OnDeath;
         public Action<float, float> HealthChanged;
         public Action<float> DamageApplied;

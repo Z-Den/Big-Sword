@@ -1,26 +1,44 @@
-using System;
 using PivotConnection;
-using Units.Health;
 using Units.Input;
 using UnityEngine;
 
 namespace Units.Player
 {
-    public class Player : Unit, IPivot 
+    public class Player : Unit, IPivot, IUnitActionController 
     {
         [SerializeField] private Transform _pivotTransform;
-
+        [SerializeField] private PhysicalMover _physicalMover;
+        [SerializeField] private Rigidbody _rigidbody;
+        private IUnitInput _inputActions;
         public Transform PivotTransform => _pivotTransform;
-        public UnitHealth Health => GetComponent<UnitHealth>();
 
         private void Start()
         {
-            Health.OnDeath += OnDeath;
+            _inputActions.RunStarted += _physicalMover.RunStarted;
+            _inputActions.RunCanceled += _physicalMover.RunCanceled;
+            _inputActions.DashStarted += _physicalMover.Dash;
         }
 
-        private void OnDeath()
+        private void OnDisable()
         {
-            GameManager.GameManager.Instance.ShowDeadPanel();
+            _inputActions.RunStarted -= _physicalMover.RunStarted;
+            _inputActions.RunCanceled -= _physicalMover.RunCanceled;
+            _inputActions.DashStarted -= _physicalMover.Dash;
+
+        }
+
+        private void Update()
+        {
+            var moveDirection = (_inputActions.MoveDirection.y * _rigidbody.transform.forward + 
+                                 _inputActions.MoveDirection.x * _rigidbody.transform.right);
+            _physicalMover.SetMoveDirection(moveDirection);
+            _physicalMover.SetRotationDegree(_inputActions.Rotation);
+        }
+
+        IUnitInput IUnitActionController.InputActions
+        {
+            get => _inputActions;
+            set => _inputActions = value;
         }
     }
 }

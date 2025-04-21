@@ -533,8 +533,8 @@ GameObject:
   - component: {fileID: 3552051668417920916}
   - component: {fileID: 6016788706432545450}
   - component: {fileID: 6142438637101308105}
+  - component: {fileID: 6320439985964148176}
   - component: {fileID: 4365035584420771703}
-  - component: {fileID: 2680763037449946971}
   m_Layer: 7
   m_Name: Sword
   m_TagString: Untagged
@@ -582,7 +582,7 @@ MonoBehaviour:
   _recoilPower: 2000
   _shotCooldown: 10
   _shotChargeTime: 2
-  _physicalMover: {fileID: 0}
+  _physicalMover: {fileID: 6320439985964148176}
   _trailPrefab: {fileID: 5868819485631490170, guid: e538c36c2e693c04388dc2535dbf5067, type: 3}
   _trailSpeed: 100
   _shootDistance: 20
@@ -615,30 +615,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 64
   m_CollisionDetection: 0
---- !u!136 &4365035584420771703
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7642850731060332622}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.10130608
-  m_Height: 5.083368
-  m_Direction: 2
-  m_Center: {x: 0, y: -0.005105555, z: 2.5521467}
---- !u!114 &2680763037449946971
+--- !u!114 &6320439985964148176
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -647,10 +624,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7642850731060332622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec7ebd3fa46a45abb7a31ef0971697dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ae07ad6f3894c5aa48badb19e58f449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _offset: {x: 0, y: 0, z: 0}
+  _distanceToFloor: 1.5
+  _groundLayers:
+    serializedVersion: 2
+    m_Bits: 24
   _maxSpeed: 20
   _accelerationPower: 2000
   _maxAcceleration: 200
@@ -687,5 +667,39 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _rotationSpeed: 300
+  _springStrength: 600
+  _springDamper: 60
   _rotationSpringStrength: 600
   _rotationSpringDamper: 60
+  _maxSpeedMultiplier: 2
+  _maxStamina: 0
+  _staminaRegenPerSecond: 0
+  _staminaSpendPerSecond: 0
+  _dashPower: 20
+  _dashStaminaCost: 40
+  _dashDelay: 0.1
+  _staminaBarPrefab: {fileID: 0}
+--- !u!136 &4365035584420771703
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7642850731060332622}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.10130608
+  m_Height: 5.083368
+  m_Direction: 2
+  m_Center: {x: 0, y: -0.005105555, z: 2.5521467}

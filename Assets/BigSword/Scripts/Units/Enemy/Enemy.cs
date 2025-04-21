@@ -1,13 +1,11 @@
-using PivotConnection;
 using Units.Enemy.StateMachine;
 using Units.Health;
-using Units.Input;
 using UnityEngine;
 using IUIElementHolder = Units.UI.IUIElementHolder;
 
 namespace Units.Enemy
 {
-    public class Enemy : Unit, IPivot
+    public class Enemy : Unit
     {
         [SerializeField] private PhysicalMover _mover;
         [SerializeField] private EnemyParameters _parameters;
@@ -20,12 +18,10 @@ namespace Units.Enemy
         public EnemyStateMachine StateMachine => _stateMachine;
         public UnitUI UnitUI => _unitUI;
         public UnitHealth Health => _health;
-        public Transform PivotTransform => transform;
         
         protected void Awake()
         { 
             _stateMachine.Init(this);
-            (_mover as IUnitActionController).SetInput(StateMachine); 
             AddUI();
         }
 

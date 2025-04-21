@@ -1,18 +1,15 @@
 using System;
-using PivotConnection;
 using UnityEngine;
 
 namespace Units
 {
-    public class PhysicalFollower : MonoBehaviour, IPivotFollower
+    public class PhysicalFollower : MonoBehaviour
     {
-        [Header("Pivot")]
-        [SerializeField] private Vector3 _offset;
-        [Header("Speed")]
         [SerializeField] private float _maxSpeed = 5f;
         [SerializeField] private float _accelerationPower = 20f;
         [SerializeField] private float _maxAcceleration = 100f;
         [SerializeField] private AnimationCurve _accelerationFromDot;
+        [SerializeField] private Transform _pivot;
         [Header("Spring")] 
         [SerializeField] private float _rotationSpringStrength = 100f;
         [SerializeField] private float _rotationSpringDamper = 20f;
@@ -26,15 +23,7 @@ namespace Units
         private bool _isRunning;
         private bool _isDashing;
         private Vector3 _direction;
-        private Transform _pivotTransform;
 
-        Vector3 IPivotFollower.Offset => _offset;
-        Transform IPivotFollower.PivotTransform
-        {
-            get => _pivotTransform;
-            set => _pivotTransform = value;
-        }
-        
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -42,8 +31,8 @@ namespace Units
 
         private void Update()
         {
-            _direction = (_pivotTransform.position + _offset) - transform.position;
-            _targetRotation = _pivotTransform.rotation;
+            _direction = _pivot.position - transform.position;
+            _targetRotation = _pivot.rotation;
         }
 
         private void FixedUpdate()
