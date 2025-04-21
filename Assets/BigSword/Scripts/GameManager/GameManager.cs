@@ -21,6 +21,12 @@ namespace GameManager
             SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
         }
 
+        public void StartNewGame()
+        {
+            _currentSave = SaveLoadService.Instance.GetNewSaveData();
+            SceneManager.LoadScene(_currentSave.SceneIndex);
+        }
+        
         public void LoadGame(string loadFileName)
         {
             _currentSave = SaveLoadService.Instance.GetPlayerData(loadFileName);

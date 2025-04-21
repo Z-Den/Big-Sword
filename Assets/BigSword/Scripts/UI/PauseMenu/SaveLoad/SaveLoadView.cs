@@ -12,7 +12,9 @@ namespace UI.PauseMenu.SaveLoad
         [SerializeField] private bool _isSaveMenu; 
         [SerializeField] private Transform _container;
         [SerializeField] private SaveSlot _cellPrefab;
+        [SerializeField] private GameObject _confirmPanel;
         
+        public bool IsConfirmPanelOpened => _confirmPanel.activeSelf;
         public SaveSlot EmptySlot { get; private set; }
         public List<SaveSlot> Slots { get; private set; }
         
@@ -53,9 +55,9 @@ namespace UI.PauseMenu.SaveLoad
                 Destroy(child.gameObject);
         }
 
-        public void ShowConfirmPanel()
+        public void SetConfirmPanelVisible(bool isVisible)
         {
-            
+            _confirmPanel.SetActive(isVisible);
         }
     }
 }

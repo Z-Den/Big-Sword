@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deadPanelPrefab: {fileID: 767796671596271451, guid: 3926e87c65af9664f96347d18d3d4e7c, type: 3}
-  _pauseMenuPrefab: {fileID: 3575032272086533453, guid: 4507100598174984587d8ac48dbe12f6, type: 3}
+  _pauseMenuPrefab: {fileID: 2574886572524852003, guid: 4507100598174984587d8ac48dbe12f6, type: 3}
   _canvas: {fileID: 793557846}
 --- !u!1 &1086034146
 GameObject:

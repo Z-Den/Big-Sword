@@ -1,17 +1,18 @@
-using System;
-using SaveLoadSystem;
+using UI.PauseMenu.SaveLoad;
+using UI.PauseMenu.Settings;
 using Units.Input;
-using Units.UI;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace UI.PauseMenu
 {
-    public class PauseMenuController : UIElement, IUIElementHolder, IUnitActionController
+    public class PauseMenuController : MonoBehaviour, IUnitActionController
     {
         private PauseMenuModel _model;
         private PauseMenuView _view;
         private IUnitInput _inputActions;
+        private MenuPanel _openMenuPanel;
+
 
         private void Start()
         {
@@ -21,27 +22,33 @@ namespace UI.PauseMenu
             _inputActions.MenuButtonPressed += OpenMenu;
             _inputActions.UIBackButtonPressed += BackKeyPressed;
             _inputActions.UIApplyButtonPressed += ApplyKeyPressed;
-            
+
             CloseMenu();
         }
-        
+
         private void ApplyKeyPressed()
         {
-           
+
         }
 
         private void BackKeyPressed()
         {
-            if (_view.IsPanelOpened)
-                _view.ClosePanel();
-            else 
+            if (_openMenuPanel != null)
+                _openMenuPanel.BackButtonPressed(ClosePanel);
+            else
                 CloseMenu();
+        }
+
+        private void ClosePanel()
+        {
+            _view.ClosePanel();
+            _openMenuPanel = null;
         }
 
         private void OpenMenu()
         {
             if (_model.IsOpen) return;
-            
+
             _model.SetMenuActive(true);
             _view.SetActive(true);
         }
@@ -49,30 +56,37 @@ namespace UI.PauseMenu
         private void CloseMenu()
         {
             if (!_model.IsOpen) return;
-            
+
             _model.SetMenuActive(false);
             _view.SetActive(false);
         }
-        
-        public UIElement GetUIElement()
+
+        public void OnLastSaveDataLoaded()
         {
-            return this;
+            _model.LoadLatestSave();
         }
-        
-        public void OnContinueButtonClicked()
+
+        public void OnNewGameButtonPressed()
+        {
+            _model.StartNewGame();
+        }
+
+    public void OnContinueButtonClicked()
         {
             CloseMenu();
         }
 
-        public void OnPanelButtonClicked(GameObject panel)
+        public void OnPanelButtonClicked(MenuPanel panel)
         {
             _view.ShowPanel(panel);
+            _openMenuPanel = panel;
+            panel.Init();
         }
         
         public void OnExitButtonClicked()
         {
             if (Application.isEditor)
-                UnityEditor.EditorApplication.isPlaying = false;
+                EditorApplication.isPlaying = false;
             else
                 Application.Quit();
         }

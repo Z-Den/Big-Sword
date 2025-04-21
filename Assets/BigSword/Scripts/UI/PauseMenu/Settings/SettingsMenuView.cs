@@ -9,6 +9,8 @@ namespace UI.PauseMenu.Settings
         [SerializeField] private List<MenuButton> _buttons;
         private MenuButton _currentButton;
         private GameObject _currentPanel;
+        
+        public bool IsPanelOpen => _currentPanel != null;
 
         private void OnEnable()
         {
@@ -24,7 +26,7 @@ namespace UI.PauseMenu.Settings
             _currentPanel.SetActive(true);
         }
 
-        private void ClosePanel()
+        public void ClosePanel()
         {
             if (_currentPanel == null) return;
             

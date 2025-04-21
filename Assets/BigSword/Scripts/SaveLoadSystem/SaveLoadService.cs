@@ -69,9 +69,18 @@ namespace SaveLoadSystem
         {
             var saves = GetSaveFilesList();
             var max = saves.Max(entry => entry.SaveDate);
-            var latestSave = (SaveData)saves.Where(entry => entry.SaveDate == max);
-            Debug.Log(latestSave);
+            var latestSave = saves.Where(entry => entry.SaveDate == max).ToArray()[0];
             return latestSave;
+        }
+
+        public SaveData GetNewSaveData()
+        {
+            GetNewSavePath(out var savePath, out var fileName);
+
+            var position = new Vector3(-138f, 2f, -145f);
+            var data = new SaveData(fileName, 100, 0, position);
+            
+            return data;
         }
 
         private void GetNewSavePath(out string savePath, out string fileName)

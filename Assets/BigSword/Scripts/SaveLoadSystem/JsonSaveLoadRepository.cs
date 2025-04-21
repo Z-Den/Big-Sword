@@ -10,15 +10,9 @@ namespace SaveLoadSystem
         public SaveData LoadDataFrom(string path)
         {
             if (!File.Exists(path)) return new SaveData();
-            try
-            {
-                var json = File.ReadAllText(path);
-                return JsonUtility.FromJson<SaveData>(json);
-            }
-            catch
-            {
-                return new SaveData();
-            }
+            
+            var json = File.ReadAllText(path);
+            return JsonUtility.FromJson<SaveData>(json);
         }
         
         public void SaveDataTo(SaveData data, string path)
