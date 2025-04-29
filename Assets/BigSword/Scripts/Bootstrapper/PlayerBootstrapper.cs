@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using PivotConnection;
 using Units;
 using Units.Input;
 using Units.Player;
 using Units.UI;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Bootstrapper
 {
@@ -19,44 +21,32 @@ namespace Bootstrapper
         private UnitUI _playerUI;
         
         public Player Player => _player;
-        
-        private void Awake()
+
+        public void Init(Vector3 playerSpawnPosition)
         {
+            _playerSpawnPoint.position = playerSpawnPosition;
+
             _player = InstantiatePrefab(_playerPrefab);
             _playerUI = InstantiatePrefab(_playerUIPrefab);
-            ConfigureDependenciesInPlayerComponents();
             
-            var items = new List<GameObject>(); 
-            foreach (var itemPrefab in _playerItemPrefabs)
-                items.Add(InstantiatePrefab(itemPrefab));
+            var items = new List<GameObject>();
+            items.Add(_player.gameObject);
+            items.AddRange(_playerItemPrefabs.Select(InstantiatePrefab).ToList());
             
             ConfigureDependencies(items);
+            
         }
 
         private T InstantiatePrefab<T>(T prefab) where T : Object
         {
             return Instantiate(prefab, _playerSpawnPoint.position, Quaternion.identity);
         }
-
-        private void ConfigureDependenciesInPlayerComponents()
-        {
-            _player.gameObject.TryGetComponent(out IUnitInput input);
-            _player.gameObject.TryGetComponent(out IPivot pivot);
-            
-            foreach (var component in _player.gameObject.GetComponents<IUnitActionController>())
-                component.SetInput(input);
-
-            foreach (var component in _player.gameObject.GetComponents<IPivotFollower>())
-                component.SetPivot(pivot);
-            
-            foreach (var component in _player.gameObject.GetComponents<IUIElementHolder>())
-                _playerUI.Add(component.GetUIElement());
-        }
         
         private void ConfigureDependencies(List<GameObject> connectedObjects)
         {
-            _player.gameObject.TryGetComponent(out IUnitInput input);
+            var input = new PlayerInput();
             _player.gameObject.TryGetComponent(out IPivot pivot);
+            
             foreach (var connectedObject in connectedObjects)
             {
                 foreach (var component in connectedObject.GetComponents<IUnitActionController>())
