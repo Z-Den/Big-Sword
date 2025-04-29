@@ -1,34 +1,31 @@
-using System;
-using Units.Enemy.StateMachine;
-using Units.Input;
+using System.Collections.Generic;
+using PivotConnection;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Units.Enemy.EnemyItems
 {
-    public class Hands : MonoBehaviour
+    public class Hands : MonoBehaviour, IPivotHolder
     {
         private static readonly int IsDanger = Animator.StringToHash("IsDanger");
         private static readonly int Attack = Animator.StringToHash("Attack");
         
-        [SerializeField] private float _height;
-        [SerializeField] private float _moveSpeed = 5f;
-        [SerializeField] private float _rotationSpeed = 20f;
-        [SerializeField] private Transform _animatedLeftHand;
-        [SerializeField] private Transform _animatedRightHand;
-        [SerializeField] private Transform _physicalLeftHand;
-        [SerializeField] private Transform _physicalRightHand;
+        [SerializeField] private PhysicalFollower _physicalLeftHand;
+        [SerializeField] private PhysicalFollower _physicalRightHand;
+        [SerializeField] private List<Pivot> _pivotList;
         private Animator _animator;
-        private Transform _pivot;
+        
+        public List<Pivot> PivotList => _pivotList;
+        public PhysicalFollower HandsFollower => GetComponent<PhysicalFollower>();
         
         public void Init(Enemy enemy)
         {
             _animator = GetComponent<Animator>();
-            _pivot = enemy.transform;
             var stateMachine = enemy.StateMachine;
             stateMachine.OnDefaultState += OnDefaultState;
             stateMachine.OnDangerState += OnDangerState;
             stateMachine.Enemy.Health.OnDeath += OnDeath;
+            ((IPivotFollower)_physicalLeftHand).SetPivot(this);
+            ((IPivotFollower)_physicalRightHand).SetPivot(this);
             OnDefaultState();
         }
 
@@ -51,29 +48,6 @@ namespace Units.Enemy.EnemyItems
         private void OnDefaultState()
         {
             _animator.SetBool(IsDanger, false);
-        }
-
-        private void Update()
-        {
-            var position = _pivot.position;
-            position.y = _height;
-            transform.position = position;
-            transform.rotation = _pivot.rotation;
-            
-            // LerpMove(_leftHand, _leftHandCurrentPosition);
-            // LerpMove(_rightHand, _rightHandCurrentPosition);
-            // LerpRotate(_leftHand, _leftHandCurrentPosition);            
-            // LerpRotate(_rightHand, _rightHandCurrentPosition);
-        }
-
-        private void LerpMove(Transform hand, Transform targetPosition)
-        {
-            hand.position = Vector3.Lerp(hand.position, targetPosition.position, Time.deltaTime * _moveSpeed);
-        }
-
-        private void LerpRotate(Transform hand, Transform targetPosition)
-        {
-            hand.rotation = Quaternion.Lerp(hand.rotation, targetPosition.rotation, Time.deltaTime * _rotationSpeed);
         }
     }
 }

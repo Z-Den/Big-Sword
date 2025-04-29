@@ -582,7 +582,6 @@ MonoBehaviour:
   _recoilPower: 2000
   _shotCooldown: 10
   _shotChargeTime: 2
-  _physicalMover: {fileID: 0}
   _trailPrefab: {fileID: 5868819485631490170, guid: e538c36c2e693c04388dc2535dbf5067, type: 3}
   _trailSpeed: 100
   _shootDistance: 20
@@ -689,3 +688,4 @@ MonoBehaviour:
     m_RotationOrder: 4
   _rotationSpringStrength: 600
   _rotationSpringDamper: 60
+  _pivotKey: weapon

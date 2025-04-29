@@ -33,8 +33,12 @@ namespace Units.Player
         public Action<float> DamageApplied;
         private IUnitInput _inputActions;
         private Transform _pivotTransform;
+        private string _pivotKey;
         public bool CanShieldBeActive => _health / _maxHealth > 0.1f;
         public bool IsShieldActive => _goatSize > 0f;
+
+        string IPivotFollower.PivotKey => "main";
+
         Transform IPivotFollower.PivotTransform
         {
             get => _pivotTransform;

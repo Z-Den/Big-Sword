@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using PivotConnection;
 using Units.Enemy.StateMachine;
 using Units.Health;
@@ -7,25 +8,26 @@ using IUIElementHolder = Units.UI.IUIElementHolder;
 
 namespace Units.Enemy
 {
-    public class Enemy : Unit, IPivot
+    public class Enemy : Unit, IPivotHolder
     {
         [SerializeField] private PhysicalMover _mover;
         [SerializeField] private EnemyParameters _parameters;
         [SerializeField] private EnemyStateMachine _stateMachine;
         [SerializeField] private UnitUI _unitUI;
         [SerializeField] private UnitHealth _health;
-        
+        [SerializeField] private List<Pivot> _pivotList;
+
+        public List<Pivot> PivotList => _pivotList;
         public PhysicalMover Mover => _mover;
         public EnemyParameters Parameters => _parameters;
         public EnemyStateMachine StateMachine => _stateMachine;
         public UnitUI UnitUI => _unitUI;
         public UnitHealth Health => _health;
-        public Transform PivotTransform => transform;
         
         protected void Awake()
         { 
             _stateMachine.Init(this);
-            (_mover as IUnitActionController).SetInput(StateMachine); 
+            (Mover as IUnitActionController).SetInput(StateMachine); 
             AddUI();
         }
 
@@ -43,5 +45,6 @@ namespace Units.Enemy
         {
             _stateMachine.Update();
         }
+
     }
 }

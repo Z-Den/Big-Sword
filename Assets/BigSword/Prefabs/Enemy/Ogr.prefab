@@ -65,6 +65,9 @@ MonoBehaviour:
     _dangerStateTypeState: 1
   _unitUI: {fileID: 7177158233384806549}
   _health: {fileID: 7002621517177196551}
+  _pivotList:
+  - Key: main
+    Root: {fileID: 2950781491805389684}
   _handsPrefab: {fileID: 5295168748723761947, guid: c888256d0fca5b645bcd348450dbd1d5, type: 3}
 --- !u!54 &2591661720745417615
 Rigidbody:

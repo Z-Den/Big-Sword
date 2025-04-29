@@ -299,6 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7ebd3fa46a45abb7a31ef0971697dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pivotKey: leftHand
   _maxSpeed: 30
   _accelerationPower: 200
   _maxAcceleration: 200
@@ -335,7 +336,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _pivot: {fileID: 7327132494448254626}
   _rotationSpringStrength: 200
   _rotationSpringDamper: 40
 --- !u!54 &5714613075518374835
@@ -409,6 +409,8 @@ GameObject:
   - component: {fileID: 5295168748723761947}
   - component: {fileID: 7785376134269498480}
   - component: {fileID: 8895149917494519264}
+  - component: {fileID: 2640313915314725934}
+  - component: {fileID: 639490402439753945}
   m_Layer: 11
   m_Name: Hands
   m_TagString: Untagged
@@ -448,13 +450,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8a635fa26b4fc4a5d780618c8ba534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _height: 2.5
-  _moveSpeed: 5
-  _rotationSpeed: 20
-  _animatedLeftHand: {fileID: 0}
-  _animatedRightHand: {fileID: 0}
-  _physicalLeftHand: {fileID: 0}
-  _physicalRightHand: {fileID: 0}
+  _physicalLeftHand: {fileID: 6896437335459747690}
+  _physicalRightHand: {fileID: 8108293189423321318}
+  _pivotList:
+  - Key: leftHand
+    Root: {fileID: 7327132494448254626}
+  - Key: rightHand
+    Root: {fileID: 565797956910378207}
 --- !u!95 &7785376134269498480
 Animator:
   serializedVersion: 7
@@ -498,6 +500,84 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2640313915314725934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954601556856526025}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7ebd3fa46a45abb7a31ef0971697dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pivotKey: main
+  _maxSpeed: 20
+  _accelerationPower: 2000
+  _maxAcceleration: 200
+  _accelerationFromDot:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: -1.8410568
+      outSlope: -1.8410568
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5093138
+      value: 1.0623243
+      inSlope: -0.338641
+      outSlope: -0.338641
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.1791941
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: -0.12701455
+      outSlope: -0.12701455
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _rotationSpringStrength: 600
+  _rotationSpringDamper: 60
+--- !u!54 &639490402439753945
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8954601556856526025}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8974212205898805593
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,6 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7ebd3fa46a45abb7a31ef0971697dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _pivotKey: rightHand
   _maxSpeed: 30
   _accelerationPower: 200
   _maxAcceleration: 200
@@ -642,7 +723,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _pivot: {fileID: 565797956910378207}
   _rotationSpringStrength: 200
   _rotationSpringDamper: 40
 --- !u!54 &952005881218746366
