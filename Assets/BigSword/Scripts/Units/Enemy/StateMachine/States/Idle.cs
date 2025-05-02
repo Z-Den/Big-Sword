@@ -9,11 +9,11 @@ namespace Units.Enemy.StateMachine.States
         private readonly float _checkSphereRange;
         private readonly LayerMask _respondMask;
         
-        public Idle(Enemy enemy) : base(enemy)
+        public Idle(EnemyStateMachine stateMachine) : base(stateMachine)
         {
-            _checkSphereRange = enemy.Parameters.CheckSphereRadius;
-            _checkDelay = enemy.Parameters.CheckDelay;
-            _respondMask = enemy.Parameters.RespondMask;
+            _checkSphereRange = stateMachine.Enemy.Parameters.CheckSphereRadius;
+            _checkDelay = stateMachine.Enemy.Parameters.CheckDelay;
+            _respondMask = stateMachine.Enemy.Parameters.RespondMask;
         }
 
         public override void OnUpdate()
@@ -38,7 +38,7 @@ namespace Units.Enemy.StateMachine.States
             var colliders = Physics.OverlapSphere(Enemy.transform.position, _checkSphereRange, _respondMask);
             if (colliders.Length > 0)
             {
-                IsStateChange?.Invoke();
+                StateMachine.ChangeState();
             }
         }
     }

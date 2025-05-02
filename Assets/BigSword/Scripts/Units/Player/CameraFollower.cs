@@ -9,6 +9,9 @@ namespace Units.Player
         [SerializeField] private Vector3 _offset;
         [SerializeField] private Vector3 _rotationOffset;
         private Transform _pivotTransform;
+        private string _pivotKey;
+
+        string IPivotFollower.PivotKey => "camera";
 
         Transform IPivotFollower.PivotTransform
         {

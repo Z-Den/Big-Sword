@@ -16,7 +16,6 @@ namespace Units.Player.Weapon
         [SerializeField] private float _recoilPower = 1000;
         [SerializeField] private float _shotCooldown = 30f;
         [SerializeField] private float _shotChargeTime = 30f;
-        //[SerializeField] private PhysicalMover _physicalMover;
         [SerializeField] private TrailRenderer _trailPrefab;
         [SerializeField] private float _trailSpeed = 20f; 
         [SerializeField] private float _shootDistance;
@@ -32,15 +31,16 @@ namespace Units.Player.Weapon
         public Action<float, float> ChargeTimerChanged;
         private Transform _pivotTransform;
         private IUnitInput _inputActions;
+        private string _pivotKey;
+
+        string IPivotFollower.PivotKey => "weapon";
 
         Transform IPivotFollower.PivotTransform
         {
             get => _pivotTransform;
             set => _pivotTransform = value;
         }
-
-        public Vector3 Offset { get; }
-
+        
         private void Start()
         {   
             _inputActions.ShotStarted += StartChargeShot;

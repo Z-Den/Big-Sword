@@ -4,10 +4,11 @@ using UnityEngine;
 
 namespace Units
 {
+    [RequireComponent(typeof(Rigidbody))]
     public class PhysicalFollower : MonoBehaviour, IPivotFollower
     {
         [Header("Pivot")]
-        [SerializeField] private Vector3 _offset;
+        [SerializeField] private string _pivotKey;
         [Header("Speed")]
         [SerializeField] private float _maxSpeed = 5f;
         [SerializeField] private float _accelerationPower = 20f;
@@ -27,14 +28,15 @@ namespace Units
         private bool _isDashing;
         private Vector3 _direction;
         private Transform _pivotTransform;
+        
+        string IPivotFollower.PivotKey => _pivotKey;
 
-        Vector3 IPivotFollower.Offset => _offset;
         Transform IPivotFollower.PivotTransform
         {
             get => _pivotTransform;
             set => _pivotTransform = value;
         }
-        
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -42,7 +44,7 @@ namespace Units
 
         private void Update()
         {
-            _direction = (_pivotTransform.position + _offset) - transform.position;
+            _direction = _pivotTransform.position - transform.position;
             _targetRotation = _pivotTransform.rotation;
         }
 

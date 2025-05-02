@@ -10,9 +10,9 @@ namespace Units.Enemy.StateMachine.States
         
         protected Vector3 TargetPoint;
         
-        public Patrol(Enemy enemy) : base(enemy)
+        public Patrol(EnemyStateMachine stateMachine) : base(stateMachine)
         {
-            _path = enemy.Parameters.Path;
+            _path = stateMachine.Enemy.Parameters.Path;
         }
 
         public override void OnEnter()

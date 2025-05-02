@@ -9,28 +9,35 @@ namespace Units.Enemy.StateMachine.States
         
         protected Transform Taget;
         
+        /*
         public Follow(Enemy enemy) : base(enemy)
         {
-            _checkSphereRange = enemy.Parameters.CheckSphereRadius;
-            _respondMask = enemy.Parameters.RespondMask;
+
+        }
+        */
+
+        public Follow(EnemyStateMachine stateMachine) : base(stateMachine)
+        {
+            _checkSphereRange = Enemy.Parameters.CheckSphereRadius;
+            _respondMask = Enemy.Parameters.RespondMask;
         }
 
         public override void OnEnter()
         {
             Taget = GetTarget();
             if (!Taget)
-                IsStateChange?.Invoke();
+                StateMachine.ChangeState();
         }
 
         public override void OnUpdate()
         {
             var direction = Taget.position - Enemy.transform.position;
-            
+
             if (direction.magnitude > _checkSphereRange * 2)
-                IsStateChange?.Invoke();
+                StateMachine.ChangeState();
             
-            Enemy.Mover.SetMoveDirection(direction);
-            Enemy.Mover.SetRotation(Quaternion.LookRotation(direction));
+            StateMachine.MoveDirection = direction;
+            //StateMachine.Rotation = Quaternion.LookRotation(direction);
         }
 
         public override void OnExit()

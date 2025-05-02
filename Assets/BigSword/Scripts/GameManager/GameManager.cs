@@ -50,7 +50,6 @@ namespace GameManager
             var playerBootstrapper = FindAnyObjectByType<PlayerBootstrapper>();
             if (playerBootstrapper != null)
             {
-                Debug.Log(_currentSave.PlayerPositionByVector);
                 playerBootstrapper.Init(_currentSave.PlayerPositionByVector);
             }
         }

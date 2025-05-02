@@ -61,10 +61,25 @@ MonoBehaviour:
       m_Bits: 64
     Path: []
   _stateMachine:
-    _defaultStateType: 1
-    _dangerStateTypeState: 1
+    _states:
+    - _index: 0
+      _enterActionPrefab: {fileID: 11400000, guid: cbcc7f7e155dccb4eafe3964c6c6058b, type: 2}
+      _updateActionPrefab: {fileID: 11400000, guid: 023bb438a98f3ae4a8d85bf0ef25321f, type: 2}
+      _exitActionPrefab: {fileID: 0}
+      _enterTriggerPrefab: {fileID: 11400000, guid: 78d88f8618bca844492d1c4b21cbe09a, type: 2}
+    - _index: 1
+      _enterActionPrefab: {fileID: 11400000, guid: 6af4200945c60d04483622c8622356f1, type: 2}
+      _updateActionPrefab: {fileID: 11400000, guid: 40d3043d111d51f44bb4a6c75ece7c66, type: 2}
+      _exitActionPrefab: {fileID: 11400000, guid: 06c26a1db02eae346b659e92f6cafd98, type: 2}
+      _enterTriggerPrefab: {fileID: 11400000, guid: 3232a8d7cbcef744598db990700b3f79, type: 2}
+    _transitions:
+    - FromTo: {x: 1, y: 0}
+    - FromTo: {x: 0, y: 1}
   _unitUI: {fileID: 7177158233384806549}
   _health: {fileID: 7002621517177196551}
+  _pivotList:
+  - Key: main
+    Root: {fileID: 2950781491805389684}
   _handsPrefab: {fileID: 5295168748723761947, guid: c888256d0fca5b645bcd348450dbd1d5, type: 3}
 --- !u!54 &2591661720745417615
 Rigidbody:
