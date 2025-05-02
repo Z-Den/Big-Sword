@@ -21,12 +21,11 @@ namespace Units.Enemy.EnemyItems
         {
             _animator = GetComponent<Animator>();
             var stateMachine = enemy.StateMachine;
-            //stateMachine.OnDefaultState += OnDefaultState;
-            //stateMachine.OnDangerState += OnDangerState;
+            stateMachine.DangerStateChanged += DungerStateChanged;
             stateMachine.Enemy.Health.OnDeath += OnDeath;
             ((IPivotFollower)_physicalLeftHand).SetPivot(this);
             ((IPivotFollower)_physicalRightHand).SetPivot(this);
-            OnDefaultState();
+            DungerStateChanged(false);
         }
 
         private void OnDeath()
@@ -36,18 +35,13 @@ namespace Units.Enemy.EnemyItems
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Player.Player player))
+            if (other.TryGetComponent(out Player.Player _))
                 _animator.SetTrigger(Attack);
         }
-
-        private void OnDangerState()
+        
+        private void DungerStateChanged(bool isDanger)
         {
-            _animator.SetBool(IsDanger, true);
-        }
-
-        private void OnDefaultState()
-        {
-            _animator.SetBool(IsDanger, false);
+            _animator.SetBool(IsDanger, isDanger);
         }
     }
 }

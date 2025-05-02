@@ -2,28 +2,31 @@ using UnityEngine;
 
 namespace UnitStateMachine.UpdateActions
 {
-    [CreateAssetMenu(menuName = "State Machine/Update Actions/Follow")]
-    public class Follow : StateAction
+    [CreateAssetMenu(menuName = "State Machine/Update Actions/Keep Distance")]
+    public class KeepDistance : StateAction
     {
+        private float _minDistance;
         private float _checkSphereRange;
         private LayerMask _respondMask;
         private Transform _target;
-
+        
         public override void Init(StateMachine stateMachine)
         {
             base.Init(stateMachine);
             _checkSphereRange = Enemy.Parameters.CheckSphereRadius;
             _respondMask = Enemy.Parameters.RespondMask;
+            _minDistance = Enemy.Parameters.MinDistance;
         }
-
+        
         public override void DoAction()
         {
             if (_target == null)
                 _target = GetTarget();
             
             var direction = _target.position - Enemy.transform.position;
+            var distance = direction.magnitude;
             var moveInput = new Vector2(direction.x, direction.z);
-            StateMachine.MoveDirection = Vector2.up;
+            StateMachine.MoveDirection = Vector2.up * (distance - _minDistance);
             var curDir = new Vector2(Enemy.transform.forward.x, Enemy.transform.forward.z);
             StateMachine.Rotation = Vector2.SignedAngle(moveInput.normalized, curDir.normalized) * Time.deltaTime * 10f;
         }

@@ -63,14 +63,14 @@ MonoBehaviour:
   _stateMachine:
     _states:
     - _index: 0
-      _enterActionPrefab: {fileID: 0}
+      _enterActionPrefab: {fileID: 11400000, guid: cbcc7f7e155dccb4eafe3964c6c6058b, type: 2}
       _updateActionPrefab: {fileID: 11400000, guid: 023bb438a98f3ae4a8d85bf0ef25321f, type: 2}
       _exitActionPrefab: {fileID: 0}
       _enterTriggerPrefab: {fileID: 11400000, guid: 78d88f8618bca844492d1c4b21cbe09a, type: 2}
     - _index: 1
-      _enterActionPrefab: {fileID: 0}
-      _updateActionPrefab: {fileID: 11400000, guid: efe451a2394a68440a741468e353a841, type: 2}
-      _exitActionPrefab: {fileID: 0}
+      _enterActionPrefab: {fileID: 11400000, guid: 6af4200945c60d04483622c8622356f1, type: 2}
+      _updateActionPrefab: {fileID: 11400000, guid: 40d3043d111d51f44bb4a6c75ece7c66, type: 2}
+      _exitActionPrefab: {fileID: 11400000, guid: 06c26a1db02eae346b659e92f6cafd98, type: 2}
       _enterTriggerPrefab: {fileID: 11400000, guid: 3232a8d7cbcef744598db990700b3f79, type: 2}
     _transitions:
     - FromTo: {x: 1, y: 0}
@@ -124,7 +124,7 @@ MonoBehaviour:
   _groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  _maxSpeed: 6
+  _maxSpeed: 3
   _accelerationPower: 200
   _maxAcceleration: 10
   _accelerationFromDot:

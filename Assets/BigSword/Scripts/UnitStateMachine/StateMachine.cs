@@ -34,6 +34,7 @@ namespace UnitStateMachine
         private List<State> _potentialNextStates = new List<State>();
 
         public Enemy Enemy { get; private set; }
+        public Action<bool> DangerStateChanged;
         
         public void Init(Enemy enemy)
         {
