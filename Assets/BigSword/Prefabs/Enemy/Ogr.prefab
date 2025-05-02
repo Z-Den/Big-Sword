@@ -61,8 +61,20 @@ MonoBehaviour:
       m_Bits: 64
     Path: []
   _stateMachine:
-    _defaultStateType: 1
-    _dangerStateTypeState: 1
+    _states:
+    - _index: 0
+      _enterActionPrefab: {fileID: 0}
+      _updateActionPrefab: {fileID: 11400000, guid: 023bb438a98f3ae4a8d85bf0ef25321f, type: 2}
+      _exitActionPrefab: {fileID: 0}
+      _enterTriggerPrefab: {fileID: 11400000, guid: 78d88f8618bca844492d1c4b21cbe09a, type: 2}
+    - _index: 1
+      _enterActionPrefab: {fileID: 0}
+      _updateActionPrefab: {fileID: 11400000, guid: efe451a2394a68440a741468e353a841, type: 2}
+      _exitActionPrefab: {fileID: 0}
+      _enterTriggerPrefab: {fileID: 11400000, guid: 3232a8d7cbcef744598db990700b3f79, type: 2}
+    _transitions:
+    - FromTo: {x: 1, y: 0}
+    - FromTo: {x: 0, y: 1}
   _unitUI: {fileID: 7177158233384806549}
   _health: {fileID: 7002621517177196551}
   _pivotList:
@@ -112,7 +124,7 @@ MonoBehaviour:
   _groundLayers:
     serializedVersion: 2
     m_Bits: 8
-  _maxSpeed: 3
+  _maxSpeed: 6
   _accelerationPower: 200
   _maxAcceleration: 10
   _accelerationFromDot:

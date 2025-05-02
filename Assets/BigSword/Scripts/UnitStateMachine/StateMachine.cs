@@ -31,7 +31,7 @@ namespace UnitStateMachine
         [SerializeField] private List<Transition> _transitions;
         
         private State _currentState;
-        private List<State> _potentialNextStates;
+        private List<State> _potentialNextStates = new List<State>();
 
         public Enemy Enemy { get; private set; }
         
@@ -48,6 +48,8 @@ namespace UnitStateMachine
             {
                 state.Init(this);
             }
+            
+            ChangeState(0);
         }
         
         public void Update()

@@ -2,6 +2,7 @@ using UnityEngine;
 
 namespace UnitStateMachine.UpdateActions
 {
+    [CreateAssetMenu(menuName = "State Machine/Update Actions/Follow")]
     public class Follow : StateAction
     {
         private float _checkSphereRange;
@@ -21,8 +22,8 @@ namespace UnitStateMachine.UpdateActions
                 _target = GetTarget();
             
             var direction = _target.position - Enemy.transform.position;
-            
-            StateMachine.MoveDirection = direction;
+            var moveInput = new Vector2(direction.x, direction.z);
+            StateMachine.MoveDirection = moveInput;
         }
         
         private Transform GetTarget()

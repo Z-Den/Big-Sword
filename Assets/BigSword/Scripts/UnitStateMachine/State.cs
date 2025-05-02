@@ -55,6 +55,9 @@ namespace UnitStateMachine
         
         private StateAction GetInstance(StateAction prefab)
         {
+            if (prefab == null)
+                return ScriptableObject.CreateInstance<DoNothing>();
+            
             var instance = ScriptableObject.CreateInstance(prefab.GetType()) as StateAction;
             if (instance != null)
                 instance?.Init(_stateMachine);

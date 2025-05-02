@@ -12,7 +12,7 @@ namespace Units.Enemy
     {
         [SerializeField] private PhysicalMover _mover;
         [SerializeField] private EnemyParameters _parameters;
-        [SerializeField] private EnemyStateMachine _stateMachine;
+        [SerializeField] private UnitStateMachine.StateMachine _stateMachine;
         [SerializeField] private UnitUI _unitUI;
         [SerializeField] private UnitHealth _health;
         [SerializeField] private List<Pivot> _pivotList;
@@ -20,7 +20,7 @@ namespace Units.Enemy
         public List<Pivot> PivotList => _pivotList;
         public PhysicalMover Mover => _mover;
         public EnemyParameters Parameters => _parameters;
-        public EnemyStateMachine StateMachine => _stateMachine;
+        public UnitStateMachine.StateMachine StateMachine => _stateMachine;
         public UnitUI UnitUI => _unitUI;
         public UnitHealth Health => _health;
         

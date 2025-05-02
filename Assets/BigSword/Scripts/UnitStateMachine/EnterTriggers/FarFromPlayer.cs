@@ -2,9 +2,8 @@ using UnityEngine;
 
 namespace UnitStateMachine.EnterTriggers
 {
-    [CreateAssetMenu(menuName = "State Machine/Enter Trigger/Close to Player")]
-
-    public class CloseToPlayer : EnterTrigger
+    [CreateAssetMenu(menuName = "State Machine/Enter Trigger/Far From Player")]
+    public class FarFromPlayer : EnterTrigger
     {
         private float _checkSphereRange;
         private LayerMask _respondMask;
@@ -18,12 +17,12 @@ namespace UnitStateMachine.EnterTriggers
 
         public override bool IsReadyToTransit()
         {
-            return CheckPlayer();
+            return !CheckPlayer();
         }
         
         private bool CheckPlayer()
         {
-            var colliders = Physics.OverlapSphere(Enemy.transform.position, _checkSphereRange, _respondMask);
+            var colliders = Physics.OverlapSphere(Enemy.transform.position, _checkSphereRange * 2, _respondMask);
             return colliders.Length > 0;
         }
     }

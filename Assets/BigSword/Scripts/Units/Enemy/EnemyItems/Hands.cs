@@ -21,8 +21,8 @@ namespace Units.Enemy.EnemyItems
         {
             _animator = GetComponent<Animator>();
             var stateMachine = enemy.StateMachine;
-            stateMachine.OnDefaultState += OnDefaultState;
-            stateMachine.OnDangerState += OnDangerState;
+            //stateMachine.OnDefaultState += OnDefaultState;
+            //stateMachine.OnDangerState += OnDangerState;
             stateMachine.Enemy.Health.OnDeath += OnDeath;
             ((IPivotFollower)_physicalLeftHand).SetPivot(this);
             ((IPivotFollower)_physicalRightHand).SetPivot(this);
