@@ -8,11 +8,12 @@ namespace Units.Enemy.StateMachine
     public abstract class State
     {
         protected Enemy Enemy;
-        public Action IsStateChange;
+        protected EnemyStateMachine StateMachine;
             
-        public State(Enemy enemy)
+        public State(EnemyStateMachine stateMachine)
         {
-            Enemy = enemy;
+            StateMachine = stateMachine;
+            Enemy = StateMachine.Enemy;
         }
         
         public abstract void OnEnter(); 

@@ -7,7 +7,7 @@ namespace Units.Enemy.StateMachine.States
         private float _maxDistance;
         private float _minDistance;
         
-        public KeepDistanceAndAttack(Enemy enemy) : base(enemy)
+        public KeepDistanceAndAttack(EnemyStateMachine enemy) : base(enemy)
         {
             _maxDistance = Enemy.Parameters.CheckSphereRadius * 2;
             _minDistance = Enemy.Parameters.MinDistance;
@@ -20,10 +20,10 @@ namespace Units.Enemy.StateMachine.States
             var moveDirection = directionToTarget.normalized * (distance - _minDistance);
             
             if (distance > _maxDistance)
-                IsStateChange?.Invoke();
+                StateMachine.ChangeState();
             
-            Enemy.Mover.SetMoveDirection(moveDirection);
-            Enemy.Mover.SetRotation(Quaternion.LookRotation(directionToTarget));
+            StateMachine.MoveDirection = moveDirection;
+            //Enemy.Mover.SetRotation(Quaternion.LookRotation(directionToTarget));
         }
     }
 }

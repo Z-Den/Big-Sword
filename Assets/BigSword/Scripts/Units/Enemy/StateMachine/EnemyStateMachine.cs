@@ -37,32 +37,30 @@ namespace Units.Enemy.StateMachine
             switch (_defaultStateType)
             {
                 case DefaultStateType.Off:
-                    _defaultState = new OffState(enemy);
+                    _defaultState = new OffState(this);
                     break;
                 case DefaultStateType.Idle:
-                    _defaultState = new Idle(enemy);
+                    _defaultState = new Idle(this);
                     break;
                 case DefaultStateType.Patrol:
-                    _defaultState = new Patrol(enemy);
+                    _defaultState = new Patrol(this);
                     break;
                 case DefaultStateType.RoombaPatrol:
-                    _defaultState = new RoombaPatrol(enemy);
+                    _defaultState = new RoombaPatrol(this);
                     break;
             }   
             
             switch (_dangerStateTypeState)
             {
                 case DangerStateType.Follow:
-                    _dangerState = new Follow(enemy);
+                    _dangerState = new Follow(this);
                     break;
                 case DangerStateType.KeepDistanceAndAttack:
-                    _dangerState = new KeepDistanceAndAttack(enemy);
+                    _dangerState = new KeepDistanceAndAttack(this);
                     break;
                 case DangerStateType.RunAway:
                     break;
             }   
-            _defaultState.IsStateChange += ChangeState;
-            _dangerState.IsStateChange += ChangeState;
             ChangeState();
         }
 
@@ -71,7 +69,7 @@ namespace Units.Enemy.StateMachine
             _currentState?.OnUpdate();
         }
 
-        private void ChangeState()
+        public void ChangeState()
         {
             _currentState?.OnExit();
             _currentState = _currentState == _defaultState ? _dangerState : _defaultState;
