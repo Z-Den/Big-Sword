@@ -7,7 +7,7 @@ namespace Units.Enemy.StateMachine.States
         private Vector3 _targetPosition;
         private Quaternion _targetRotation;
         
-        public OffState(Enemy enemy) : base(enemy)
+        public OffState(EnemyStateMachine stateMachine) : base(stateMachine)
         {
 
         }

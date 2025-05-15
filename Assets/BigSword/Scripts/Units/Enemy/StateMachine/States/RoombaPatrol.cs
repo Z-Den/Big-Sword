@@ -8,7 +8,7 @@ namespace Units.Enemy.StateMachine.States
         private float _nextPointDistance = 15f;
         private float _timer;
         
-        public RoombaPatrol(Enemy enemy) : base(enemy)
+        public RoombaPatrol(EnemyStateMachine stateMachine) : base(stateMachine)
         {
             _timer = 0f;
         }

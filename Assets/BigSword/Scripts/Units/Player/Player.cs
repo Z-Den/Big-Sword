@@ -1,16 +1,17 @@
 using System;
+using System.Collections.Generic;
 using PivotConnection;
 using Units.Health;
-using Units.Input;
 using UnityEngine;
 
 namespace Units.Player
 {
-    public class Player : Unit, IPivot 
+    public class Player : Unit, IPivotHolder 
     {
         [SerializeField] private Transform _pivotTransform;
-
-        public Transform PivotTransform => _pivotTransform;
+        [SerializeField] private List<Pivot> _pivotList;
+        
+        public List<Pivot> PivotList => _pivotList;
         public UnitHealth Health => GetComponent<UnitHealth>();
 
         private void Start()
@@ -22,5 +23,6 @@ namespace Units.Player
         {
             GameManager.GameManager.Instance.ShowDeadPanel();
         }
+
     }
 }

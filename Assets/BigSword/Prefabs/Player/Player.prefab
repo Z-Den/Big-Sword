@@ -261,8 +261,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 5126422809813606797}
   - {fileID: 1275020620825606605}
+  - {fileID: 5126422809813606797}
   - {fileID: 1250740289176298748}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -279,8 +279,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pivotTransform: {fileID: 704272702347576435}
-  _physicalMover: {fileID: 8717231548375476530}
-  _rigidbody: {fileID: 4251952240186436979}
+  _pivotList:
+  - Key: main
+    Root: {fileID: 704272702347576435}
+  - Key: weapon
+    Root: {fileID: 5126422809813606797}
+  - Key: camera
+    Root: {fileID: 1250740289176298748}
 --- !u!54 &4251952240186436979
 Rigidbody:
   m_ObjectHideFlags: 0

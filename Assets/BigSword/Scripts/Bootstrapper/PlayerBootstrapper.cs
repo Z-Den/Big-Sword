@@ -45,7 +45,7 @@ namespace Bootstrapper
         private void ConfigureDependencies(List<GameObject> connectedObjects)
         {
             var input = new PlayerInput();
-            _player.gameObject.TryGetComponent(out IPivot pivot);
+            _player.gameObject.TryGetComponent(out IPivotHolder pivot);
             
             foreach (var connectedObject in connectedObjects)
             {
