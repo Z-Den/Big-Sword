@@ -10,8 +10,7 @@ namespace Units.Enemy
 
         private void Start()
         {
-            if (_handsPrefab == null)
-                InitializeItem(_handsPrefab);
+            if (_handsPrefab != null) InitializeItem(_handsPrefab);
         }
     }
 }
