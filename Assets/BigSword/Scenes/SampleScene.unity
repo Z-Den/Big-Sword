@@ -803,6 +803,83 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &719413629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 719413631}
+  - component: {fileID: 719413630}
+  m_Layer: 0
+  m_Name: MobSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &719413630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719413629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87788103467fa645ad5d529c171734e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnerType: 0
+  spawnInterval: 1
+  maxMobs: 15
+  active: 1
+  mobsToSpawn:
+  - mobPrefab: {fileID: 7735836551407822961, guid: 86d8c6632780ac2438a63f4cae8b9c7e, type: 3}
+    spawnChance: 0.66
+    isRare: 0
+    minLevel: 0
+    maxLevel: 0
+  - mobPrefab: {fileID: 5029952550233627752, guid: dded51a90d12c4a4e8399a9003dcc048, type: 3}
+    spawnChance: 0.66
+    isRare: 0
+    minLevel: 0
+    maxLevel: 0
+  - mobPrefab: {fileID: 8418220933068095726, guid: 5eade280667a65344b946b7e9d2b1bb7, type: 3}
+    spawnChance: 0.4
+    isRare: 0
+    minLevel: 0
+    maxLevel: 0
+  - mobPrefab: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+    spawnChance: 0.3
+    isRare: 0
+    minLevel: 0
+    maxLevel: 0
+  - mobPrefab: {fileID: 6701213942760852575, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
+    spawnChance: 0.1
+    isRare: 1
+    minLevel: 0
+    maxLevel: 0
+  rareMobChance: 0.1
+  spawnAreaSize: {x: 70, y: 70}
+  fixedSpawnPoints: []
+--- !u!4 &719413631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719413629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -101.2, y: 1.1413568, z: -100.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,3 +1638,4 @@ SceneRoots:
   - {fileID: 1777835412}
   - {fileID: 6513658757740635698}
   - {fileID: 1565625354}
+  - {fileID: 719413631}
