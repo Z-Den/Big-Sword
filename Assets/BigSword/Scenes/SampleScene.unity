@@ -813,6 +813,7 @@ GameObject:
   m_Component:
   - component: {fileID: 719413631}
   - component: {fileID: 719413630}
+  - component: {fileID: 719413632}
   m_Layer: 0
   m_Name: MobSpawner
   m_TagString: Untagged
@@ -835,7 +836,7 @@ MonoBehaviour:
   spawnerType: 0
   spawnInterval: 1
   maxMobs: 15
-  active: 1
+  active: 0
   mobsToSpawn:
   - mobPrefab: {fileID: 7735836551407822961, guid: 86d8c6632780ac2438a63f4cae8b9c7e, type: 3}
     spawnChance: 0.66
@@ -880,6 +881,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &719413632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 719413629}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 70, y: 20, z: 70}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
