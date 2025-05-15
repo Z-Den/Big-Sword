@@ -894,7 +894,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87788103467fa645ad5d529c171734e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
   _spawnerType: 0
   _spawnInterval: 5
   _maxMobs: 10
@@ -903,7 +902,6 @@ MonoBehaviour:
   _rareMobChance: 0.1
   _spawnRange: {x: 5, y: 5}
   _fixedSpawnPoints: []
-
 --- !u!4 &719413631
 Transform:
   m_ObjectHideFlags: 0
@@ -1630,7 +1628,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943387820}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1642,5 +1639,4 @@ SceneRoots:
   - {fileID: 1777835412}
   - {fileID: 1565625354}
   - {fileID: 719413631}
-
   - {fileID: 525740146}
