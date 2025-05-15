@@ -838,32 +838,17 @@ MonoBehaviour:
   maxMobs: 15
   active: 0
   mobsToSpawn:
-  - mobPrefab: {fileID: 7735836551407822961, guid: 86d8c6632780ac2438a63f4cae8b9c7e, type: 3}
-    spawnChance: 0.66
-    isRare: 0
-    minLevel: 0
-    maxLevel: 0
-  - mobPrefab: {fileID: 5029952550233627752, guid: dded51a90d12c4a4e8399a9003dcc048, type: 3}
-    spawnChance: 0.66
-    isRare: 0
-    minLevel: 0
-    maxLevel: 0
-  - mobPrefab: {fileID: 8418220933068095726, guid: 5eade280667a65344b946b7e9d2b1bb7, type: 3}
-    spawnChance: 0.4
-    isRare: 0
-    minLevel: 0
-    maxLevel: 0
-  - mobPrefab: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
-    spawnChance: 0.3
-    isRare: 0
-    minLevel: 0
-    maxLevel: 0
   - mobPrefab: {fileID: 6701213942760852575, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
-    spawnChance: 0.1
+    spawnChance: 0.2
     isRare: 1
     minLevel: 0
     maxLevel: 0
-  rareMobChance: 0.1
+  - mobPrefab: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+    spawnChance: 0.6
+    isRare: 0
+    minLevel: 0
+    maxLevel: 0
+  rareMobChance: 0.2
   spawnAreaSize: {x: 70, y: 70}
   fixedSpawnPoints: []
 --- !u!4 &719413631
