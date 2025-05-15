@@ -5,7 +5,6 @@ using Units;
 using Units.Enemy;
 using Units.Input;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UnitStateMachine
 {

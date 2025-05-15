@@ -4,13 +4,12 @@ using UnityEngine;
 
 namespace Units.Enemy.EnemyItems
 {
-    public class Hands : MonoBehaviour, IPivotHolder
+    public class Item : MonoBehaviour, IPivotHolder
     {
         private static readonly int IsDanger = Animator.StringToHash("IsDanger");
         private static readonly int Attack = Animator.StringToHash("Attack");
         
-        [SerializeField] private PhysicalFollower _physicalLeftHand;
-        [SerializeField] private PhysicalFollower _physicalRightHand;
+        [SerializeField] private PhysicalFollower[] _physicalItems;
         [SerializeField] private List<Pivot> _pivotList;
         private Animator _animator;
         
@@ -21,11 +20,10 @@ namespace Units.Enemy.EnemyItems
         {
             _animator = GetComponent<Animator>();
             var stateMachine = enemy.StateMachine;
-            stateMachine.DangerStateChanged += DungerStateChanged;
+            stateMachine.DangerStateChanged += DangerStateChanged;
             stateMachine.Enemy.Health.OnDeath += OnDeath;
-            ((IPivotFollower)_physicalLeftHand).SetPivot(this);
-            ((IPivotFollower)_physicalRightHand).SetPivot(this);
-            DungerStateChanged(false);
+            foreach (var item in _physicalItems) ((IPivotFollower)item).SetPivot(this);
+            DangerStateChanged(false);
         }
 
         private void OnDeath()
@@ -39,7 +37,7 @@ namespace Units.Enemy.EnemyItems
                 _animator.SetTrigger(Attack);
         }
         
-        private void DungerStateChanged(bool isDanger)
+        private void DangerStateChanged(bool isDanger)
         {
             _animator.SetBool(IsDanger, isDanger);
         }
