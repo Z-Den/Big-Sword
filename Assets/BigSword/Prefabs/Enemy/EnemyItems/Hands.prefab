@@ -450,8 +450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8a635fa26b4fc4a5d780618c8ba534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _physicalLeftHand: {fileID: 6896437335459747690}
-  _physicalRightHand: {fileID: 8108293189423321318}
+  _physicalItems:
+  - {fileID: 6896437335459747690}
+  - {fileID: 8108293189423321318}
   _pivotList:
   - Key: leftHand
     Root: {fileID: 7327132494448254626}
