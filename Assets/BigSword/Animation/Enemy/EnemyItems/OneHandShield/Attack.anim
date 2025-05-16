@@ -28,27 +28,27 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.33333334
-        value: {x: -20.832, y: -13.086, z: -12.197}
-        inSlope: {x: 0, y: -104.688, z: -97.576}
-        outSlope: {x: 0, y: -104.688, z: -97.576}
+        value: {x: -12.558, y: 6.107, z: -1.394}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: 62.195, y: -99.214, z: -76.116}
-        inSlope: {x: 0, y: -443.99097, z: -278.42398}
-        outSlope: {x: 0, y: -443.99097, z: -278.42398}
+        value: {x: 8.877, y: -21.602, z: -1.052}
+        inSlope: {x: 0, y: -212.208, z: 4.104}
+        outSlope: {x: 0, y: -212.208, z: 4.104}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.6666667
-        value: {x: 59.676, y: -161.083, z: -105.005}
-        inSlope: {x: -20.152008, y: 0, z: 0}
-        outSlope: {x: -20.152008, y: 0, z: 0}
+        value: {x: 7.387, y: -64.629, z: 1.024}
+        inSlope: {x: -11.919998, y: 0, z: 0}
+        outSlope: {x: -11.919998, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -65,7 +65,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Sword
+    path: Shield
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -81,7 +81,7 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.33333334
-        value: {x: 0.27, y: 0.48, z: -0.5}
+        value: {x: 0.37, y: 0.11, z: 0.05}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -90,18 +90,18 @@ AnimationClip:
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.5
-        value: {x: -0.55, y: 0.1, z: 0.31}
-        inSlope: {x: -2.3999991, y: -2.22, z: 0}
-        outSlope: {x: -2.3999991, y: -2.22, z: 0}
+        value: {x: -0.06, y: -0.04, z: -0.11}
+        inSlope: {x: -2.1000001, y: -0.90000004, z: -0.90000004}
+        outSlope: {x: -2.1000001, y: -0.90000004, z: -0.90000004}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
         outWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
       - serializedVersion: 3
         time: 0.6666667
-        value: {x: -0.75, y: -0.26, z: 0.2}
-        inSlope: {x: 0, y: 0, z: -0.62}
-        outSlope: {x: 0, y: 0, z: -0.62}
+        value: {x: -0.33, y: -0.19, z: -0.25}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
         weightedMode: 0
         inWeight: {x: 0.33333334, y: 0.33333334, z: 0.33333334}
@@ -118,7 +118,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Sword
+    path: Shield
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -130,7 +130,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1529145355
+      path: 423614430
       attribute: 1
       script: {fileID: 0}
       typeID: 4
@@ -139,7 +139,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1529145355
+      path: 423614430
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -184,7 +184,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.27
+        value: 0.37
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -193,16 +193,16 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -0.55
-        inSlope: -2.3999991
-        outSlope: -2.3999991
+        value: -0.06
+        inSlope: -2.1000001
+        outSlope: -2.1000001
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: -0.75
+        value: -0.33
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -222,7 +222,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -241,7 +241,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: 0.48
+        value: 0.11
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -250,16 +250,16 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.1
-        inSlope: -2.22
-        outSlope: -2.22
+        value: -0.04
+        inSlope: -0.90000004
+        outSlope: -0.90000004
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: -0.26
+        value: -0.19
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -279,7 +279,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -298,7 +298,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -0.5
+        value: 0.05
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -307,18 +307,18 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 0.31
-        inSlope: 0
-        outSlope: 0
+        value: -0.11
+        inSlope: -0.90000004
+        outSlope: -0.90000004
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: 0.2
-        inSlope: -0.62
-        outSlope: -0.62
+        value: -0.25
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -336,7 +336,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -355,7 +355,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -20.832
+        value: -12.558
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -364,7 +364,7 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: 62.195
+        value: 8.877
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -373,9 +373,9 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: 59.676
-        inSlope: -20.152008
-        outSlope: -20.152008
+        value: 7.387
+        inSlope: -11.919998
+        outSlope: -11.919998
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
@@ -393,7 +393,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -412,25 +412,25 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -13.086
-        inSlope: -104.688
-        outSlope: -104.688
+        value: 6.107
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -99.214
-        inSlope: -443.99097
-        outSlope: -443.99097
+        value: -21.602
+        inSlope: -212.208
+        outSlope: -212.208
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: -161.083
+        value: -64.629
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -450,7 +450,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -469,25 +469,25 @@ AnimationClip:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.33333334
-        value: -12.197
-        inSlope: -97.576
-        outSlope: -97.576
+        value: -1.394
+        inSlope: 0
+        outSlope: 0
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.5
-        value: -76.116
-        inSlope: -278.42398
-        outSlope: -278.42398
+        value: -1.052
+        inSlope: 4.104
+        outSlope: 4.104
         tangentMode: 136
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.6666667
-        value: -105.005
+        value: 1.024
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -507,7 +507,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -520,7 +520,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -532,7 +532,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
@@ -544,7 +544,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Sword
+    path: Shield
     classID: 4
     script: {fileID: 0}
     flags: 0
