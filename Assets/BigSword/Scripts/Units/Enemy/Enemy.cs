@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using PivotConnection;
+using Units.Enemy.EnemyItems;
 using Units.Enemy.StateMachine;
 using Units.Health;
 using Units.Input;
@@ -46,6 +47,13 @@ namespace Units.Enemy
         {
             _stateMachine.Update();
         }
-
+        
+        protected void InitializeItem(Item prefab)
+        {
+            var leftItem = Instantiate(prefab);
+            leftItem.transform.position = transform.position;
+            ((IPivotFollower)leftItem.HandsFollower).SetPivot(this);
+            leftItem.Init(this);
+        } 
     }
 }
