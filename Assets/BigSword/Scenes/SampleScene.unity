@@ -799,6 +799,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3506960072496754625, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+      propertyPath: _rightHandItemPrefab
+      value: 
+      objectReference: {fileID: 7262273265955178518, guid: baaa5e1ec92fb2640b4377f7417f843b, type: 3}
     - target: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
       propertyPath: m_Name
       value: SimpleEnemy
