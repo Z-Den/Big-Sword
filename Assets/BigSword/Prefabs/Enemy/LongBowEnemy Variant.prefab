@@ -48,6 +48,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3506960072496754625, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+      propertyPath: _leftHandItemPrefab
+      value: 
+      objectReference: {fileID: 3941638940567315932, guid: 9c36ccfbae9eb2240abc75b5b1ee4de6, type: 3}
+    - target: {fileID: 3506960072496754625, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+      propertyPath: _rightHandItemPrefab
+      value: 
+      objectReference: {fileID: -9033834186003964774, guid: a27f4fb090018914f9ace214d70add09, type: 3}
     - target: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
       propertyPath: m_Name
       value: LongBowEnemy Variant

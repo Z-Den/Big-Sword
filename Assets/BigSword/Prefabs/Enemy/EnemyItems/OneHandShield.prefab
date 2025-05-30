@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9031199597669165518}
   - component: {fileID: 3963129611578155116}
+  - component: {fileID: -1634548175577822262}
   m_Layer: 0
   m_Name: OneHandShield
   m_TagString: Untagged
@@ -55,6 +56,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1634548175577822262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3299500520370159705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8a635fa26b4fc4a5d780618c8ba534, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _physicalItems: []
+  _pivotList: []
 --- !u!1 &7519627542391145027
 GameObject:
   m_ObjectHideFlags: 0

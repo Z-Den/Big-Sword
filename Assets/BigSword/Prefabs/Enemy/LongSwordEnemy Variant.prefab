@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3506960072496754625, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+      propertyPath: _rightHandItemPrefab
+      value: 
+      objectReference: {fileID: -878635077673179982, guid: 558b82894d1548447af76fe7e8f0e7dd, type: 3}
     - target: {fileID: 5029952550233627752, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
       propertyPath: m_Name
       value: LongSwordEnemy Variant
