@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+using BigSword.Scripts.ScoreSystem;
 using Bootstrapper;
 using SaveLoadSystem;
 using Units.Health;
@@ -8,17 +11,35 @@ namespace GameManager
 {
     public class GameManager : MonoBehaviour
     {
+        private int _levelToCompleteGame = 10;
         private GameObject _deadPanelPrefab;
+        private GameObject _completeGamePrefab;
         private SaveData _currentSave;
         private static GameManager _instance;
         public static GameManager Instance => _instance;
 
-        public void Init(GameObject deadPanelPrefab)
+        public void Init(GameObject deadPanelPrefab, GameObject completeGamePrefab)
         {
             _deadPanelPrefab = deadPanelPrefab;
+            _completeGamePrefab = completeGamePrefab;
             _instance = FindAnyObjectByType<GameManager>();
             _deadPanelPrefab.SetActive(false);
+            _completeGamePrefab.SetActive(false);
+        }
+
+        private void Start()
+        {
             SceneManager.sceneLoaded += SceneManagerOnSceneLoaded;
+            ScoreSystem.Instance.OnNewLevelReached += OnNewLevelReached;
+        }
+
+        private void OnNewLevelReached(int level)
+        {
+            if (_levelToCompleteGame == level)
+            {
+                var completeGamePrefab = Instantiate(_completeGamePrefab, GetCanvas().transform);
+                completeGamePrefab.SetActive(true);
+            }
         }
 
         public void StartNewGame()
@@ -35,9 +56,14 @@ namespace GameManager
 
         public void ShowDeadPanel()
         {
-            var canvas = FindAnyObjectByType<Canvas>(FindObjectsInactive.Exclude);
-            var deadPanel = Instantiate(_deadPanelPrefab, canvas.transform);
-            _deadPanelPrefab.SetActive(true);
+            var deadPanel = Instantiate(_deadPanelPrefab, GetCanvas().transform);
+            deadPanel.SetActive(true);
+        }
+
+        private Canvas GetCanvas()
+        {
+            var canvases = FindObjectsByType<Canvas>(FindObjectsSortMode.None);
+            return canvases.FirstOrDefault(canvas => canvas.renderMode == RenderMode.ScreenSpaceOverlay);
         }
         
         public void RestartGame()

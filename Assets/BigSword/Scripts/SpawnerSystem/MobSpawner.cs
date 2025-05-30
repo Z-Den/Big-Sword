@@ -1,7 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using BigSword.Scripts.ScoreSystem;
+using Units;
+using Units.Enemy;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace SpawnerSystem
@@ -16,40 +20,57 @@ namespace SpawnerSystem
     [Serializable]
     public class MobSpawnData
     {
-        public GameObject _mobPrefab;
+        public Enemy _mobPrefab;
         [Range(0f, 1f)] public float _spawnChance = 0.5f;
+        [Min(0)] public int _minLevelToSpawn = 0;
+        [Min(0)] public int _maxLevelToSpawn = 0;
         public bool _isRare = false;
-        public int _minLevel = 1;
-        public int _maxLevel = 10;
     }
 
     public class MobSpawner : MonoBehaviour
     {
-        [Header("Spawner Settings")] [SerializeField]
+        public static MobSpawner Instance { get; private set; }
         private SpawnerType _spawnerType;
 
-        [SerializeField] private float _spawnInterval = 5f;
-        [SerializeField] private int _maxMobs = 10;
-        [SerializeField] private bool _active = false;
-
-        [Header("Mob Settings")] [SerializeField]
+        private int _currentLevel = 0;
+        private float _spawnInterval = 5f;
         private List<MobSpawnData> _mobsToSpawn;
-
-        [SerializeField, Range(0f, 1f)] private float _rareMobChance = 0.1f;
-
-        [Header("Area Settings")] [SerializeField]
+        private float _rareMobChance = 0.1f;
         private Vector2 _spawnRange = new(5f, 5f);
 
-        [SerializeField] private List<Transform> _fixedSpawnPoints;
+        private List<Transform> _fixedSpawnPoints = new List<Transform>();
 
         private float _timer = 0;
         private float _nextSpawnTime;
-        private List<GameObject> _spawnedMobs = new();
+        
+        
+        private List<MobSpawnData> _preferredMobs => 
+            _mobsToSpawn.Where(x => _currentLevel >= x._minLevelToSpawn && _currentLevel <= x._maxLevelToSpawn).ToList();
+        public Action<Enemy> OnSpawn;
+
+        public void Init(SpawnerType type, List<MobSpawnData> mobsToSpawn)
+        {
+            _mobsToSpawn = mobsToSpawn;
+            _spawnerType = type;
+            Instance = FindAnyObjectByType<MobSpawner>();
+        }
+
+        private void Start()
+        {
+            ScoreSystem.Instance.OnNewLevelReached += OnNewLevelReached;
+            _currentLevel = ScoreSystem.Instance.Level;
+        }
+
+        private void OnNewLevelReached(int level)
+        {
+            _currentLevel = level;
+        }
 
         private void Update()
         {
-            if (!_active) return;
-
+            if (_fixedSpawnPoints.Count == 0)
+                return;
+            
             if (_timer < 0)
             {
                 SpawnMob();
@@ -74,9 +95,9 @@ namespace SpawnerSystem
             var newMob = Instantiate(mobData._mobPrefab, spawnPosition, Quaternion.identity);
 
             // Усиливаем редких мобов
-            if (mobData._isRare) EnhanceMob(newMob);
-
-            _spawnedMobs.Add(newMob);
+            if (mobData._isRare) EnhanceMob(newMob.gameObject);
+            
+            OnSpawn?.Invoke(newMob);
         }
 
         private MobSpawnData ChooseMobToSpawn()
@@ -84,7 +105,7 @@ namespace SpawnerSystem
             // Сначала проверяем шанс появления редкого моба
             if (Random.value <= _rareMobChance)
             {
-                var rareMobs = _mobsToSpawn.FindAll(m => m._isRare);
+                var rareMobs = _preferredMobs.FindAll(m => m._isRare);
                 if (rareMobs.Count > 0)
                     return rareMobs[Random.Range(0, rareMobs.Count)];
             }
@@ -93,7 +114,7 @@ namespace SpawnerSystem
             var availableMobs = new List<MobSpawnData>();
             var chances = new List<float>();
 
-            foreach (var mob in _mobsToSpawn)
+            foreach (var mob in _preferredMobs)
             {
                 if (mob._isRare) continue;
 
@@ -162,14 +183,15 @@ namespace SpawnerSystem
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        public void PlayerOnTrigger(SpawnTrigger spawnTrigger)
         {
-            if (other.CompareTag("Player")) _active = true;
+            _fixedSpawnPoints.AddRange(spawnTrigger.SpawnPoints);
         }
 
-        private void OnTriggerExit(Collider other)
+        public void PlayerFromTrigger(SpawnTrigger spawnTrigger)
         {
-            if (other.CompareTag("Player")) _active = false;
+            foreach (var spawnPoint in spawnTrigger.SpawnPoints) 
+                _fixedSpawnPoints.Remove(spawnPoint);
         }
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using BigSword.Scripts.ScoreSystem;
 using PivotConnection;
 using Units.Enemy.EnemyItems;
 using Units.Enemy.StateMachine;
@@ -12,6 +13,7 @@ namespace Units.Enemy
 {
     public class Enemy : Unit, IPivotHolder
     {
+        [SerializeField] private int _scoreToKill = 100;
         [SerializeField] private PhysicalMover _mover;
         [SerializeField] private EnemyParameters _parameters;
         [SerializeField] private UnitStateMachine.StateMachine _stateMachine;
@@ -19,6 +21,7 @@ namespace Units.Enemy
         [SerializeField] private UnitHealth _health;
         [SerializeField] private List<Pivot> _pivotList;
 
+        public int ScoreToKill => _scoreToKill;
         public List<Pivot> PivotList => _pivotList;
         public PhysicalMover Mover => _mover;
         public EnemyParameters Parameters => _parameters;
@@ -32,7 +35,7 @@ namespace Units.Enemy
             (Mover as IUnitActionController).SetInput(StateMachine); 
             AddUI();
         }
-
+        
         private void AddUI()
         {
             foreach (var uiHolder in GetComponents<IUIElementHolder>())

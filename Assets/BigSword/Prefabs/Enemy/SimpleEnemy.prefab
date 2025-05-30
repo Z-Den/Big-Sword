@@ -505,6 +505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571f7e3a55284d9eac193de36e707981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreToKill: 150
   _mover: {fileID: 6709458404537282957}
   _parameters:
     CheckSphereRadius: 20
