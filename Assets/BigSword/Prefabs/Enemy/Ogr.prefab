@@ -51,6 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 571f7e3a55284d9eac193de36e707981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _scoreToKill: 350
   _mover: {fileID: 6085733899770588612}
   _parameters:
     CheckSphereRadius: 10

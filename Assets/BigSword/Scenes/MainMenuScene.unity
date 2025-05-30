@@ -275,17 +275,17 @@ MonoBehaviour:
       _enterActionPrefab: {fileID: 0}
       _updateActionPrefab: {fileID: 0}
       _exitActionPrefab: {fileID: 0}
-      _enterTrigger: {fileID: 0}
+      _enterTriggerPrefab: {fileID: 0}
     - _index: 2
       _enterActionPrefab: {fileID: 0}
       _updateActionPrefab: {fileID: 0}
       _exitActionPrefab: {fileID: 0}
-      _enterTrigger: {fileID: 0}
+      _enterTriggerPrefab: {fileID: 0}
     - _index: 3
       _enterActionPrefab: {fileID: 0}
       _updateActionPrefab: {fileID: 0}
       _exitActionPrefab: {fileID: 0}
-      _enterTrigger: {fileID: 0}
+      _enterTriggerPrefab: {fileID: 0}
     _transitions:
     - FromTo: {x: 1, y: 2}
     - FromTo: {x: 1, y: 3}
@@ -438,8 +438,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _deadPanelPrefab: {fileID: 767796671596271451, guid: 3926e87c65af9664f96347d18d3d4e7c, type: 3}
+  _completePrefab: {fileID: 767796671596271451, guid: d4879426ba52b384d87bc4e9844f66cb, type: 3}
   _pauseMenuPrefab: {fileID: 2574886572524852003, guid: 4507100598174984587d8ac48dbe12f6, type: 3}
   _canvas: {fileID: 793557846}
+  _spawnerType: 1
+  _spawnData:
+  - _mobPrefab: {fileID: 6496109616233382850, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
+    _spawnChance: 0.302
+    _minLevelToSpawn: 3
+    _maxLevelToSpawn: 9
+    _isRare: 0
+  - _mobPrefab: {fileID: 1027436215778459951, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+    _spawnChance: 0.717
+    _minLevelToSpawn: 0
+    _maxLevelToSpawn: 7
+    _isRare: 0
+  - _mobPrefab: {fileID: 1027436215778459951, guid: 3beb2af54bee7c44bb907566d7b99c17, type: 3}
+    _spawnChance: 0.717
+    _minLevelToSpawn: 7
+    _maxLevelToSpawn: 9
+    _isRare: 1
+  - _mobPrefab: {fileID: 6496109616233382850, guid: a1d10fc2a13a52045a7921a0b199bd9c, type: 3}
+    _spawnChance: 0.717
+    _minLevelToSpawn: 10
+    _maxLevelToSpawn: 10
+    _isRare: 1
 --- !u!1 &1086034146
 GameObject:
   m_ObjectHideFlags: 0
